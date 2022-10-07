@@ -1,6 +1,7 @@
 package Logica;
 
 public class Ranking {
+	
 	protected Jugador[] arregloJugadores=new Jugador[5];
 	
 	public Jugador[] getJugador() {
