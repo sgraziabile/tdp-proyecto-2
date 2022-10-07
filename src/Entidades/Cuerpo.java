@@ -11,6 +11,19 @@ public class Cuerpo extends Entidad{
 		this.alto = alto;
 		this.ancho= ancho;
 	}
+	
+	public void setX(float x) {
+		this.x = x;
+	}
+	public void setY(float y) {
+		this.y = y;
+	}
+	public float getX() {
+		return x;
+	}
+	public float getY() {
+		return y;
+	}
 	@Override
 	public void afectarSerpiente(SerpienteLogica snake) {
 		// TODO Auto-generated method stub
