@@ -13,7 +13,8 @@ public class SerpienteLogica  {
 	
 	public SerpienteLogica() {
 		cuerpo = new ArrayList<Cuerpo>();
-		cabeza = new Cuerpo(10, 10, 5, 5);
+		cabeza = new Cuerpo(10, 10);
+		cabeza.getMiGrafica().setImagen(9);
 		cuerpo.add(cabeza);
 	}
 	
@@ -27,8 +28,9 @@ public class SerpienteLogica  {
 		else {
 			agregarBloque(x,y);
 			cuerpo.remove(0);
+			//no tendrias que remover el ultimo aca? 
 		}
-		esteBloque = miJuego.getBloque((int)cabeza.getX(), (int)cabeza.getY());
+		esteBloque = miJuego.miTablero.getBloque((int)cabeza.getX(), (int)cabeza.getY());
 		for (Entidad e: esteBloque.getEntidades())
 			if (colisiono(e)) {
 				//solucionar colision con visitor
@@ -46,7 +48,7 @@ public class SerpienteLogica  {
 	}
 	
 	private void agregarBloque(int x, int y) {
-		Cuerpo nuevo = new Cuerpo(cabeza.getX(), cabeza.getY(), 5, 5);
+		Cuerpo nuevo = new Cuerpo(cabeza.getX(), cabeza.getY());
 		cabeza.setX(cabeza.getX()+x);
 		cabeza.setY(cabeza.getY()+y);
 		cuerpo.add(1, nuevo);

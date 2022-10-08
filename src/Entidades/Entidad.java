@@ -1,15 +1,21 @@
 package Entidades;
 
+import GUI.EntidadGrafica;
 import Logica.SerpienteLogica;
 
 public abstract class Entidad {
 	protected int x;
 	protected int y;
-	protected int alto;
-	protected int ancho;
-	
+	protected final int alto = 5;
+	protected final int ancho = 5;
+	protected EntidadGrafica miGrafica;
 	
 	public abstract void afectarSerpiente(SerpienteLogica snake);
+	
+	public EntidadGrafica getMiGrafica() {
+		return miGrafica;
+	}
+
 	public int getX() {
 		return x;
 	}
@@ -23,5 +29,11 @@ public abstract class Entidad {
 	
 	public int getAncho() {
 		return ancho;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public void setY(int y) {
+		this.y = y;
 	}
 }

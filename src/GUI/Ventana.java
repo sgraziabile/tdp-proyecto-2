@@ -54,10 +54,8 @@ public class Ventana extends JFrame {
 	}
 	
 	public void actualizarGrafica(EntidadGrafica eg) {
-		JLabel nuevoLbl = new JLabel();
-		nuevoLbl.setIcon(eg.grafica);
-		nuevoLbl.setBounds(eg.miEntidad.getX(), eg.miEntidad.getY(), eg.miEntidad.getAlto(), eg.miEntidad.getAncho());
-		contentPane.add(nuevoLbl);
+		eg.grafica.setBounds(eg.miEntidad.getX(), eg.miEntidad.getY(), eg.miEntidad.getAlto(), eg.miEntidad.getAncho());
+		contentPane.add(eg.grafica);
 	}
 	public void mostrarRanking() {
 		
@@ -69,5 +67,9 @@ public class Ventana extends JFrame {
 		JLabel lblGO = new JLabel();
 		lblGO.setIcon(null);
 		contentPane.add(lblGO);
+	}
+	
+	public void borrarGrafica(EntidadGrafica eg) {
+		contentPane.remove(eg.grafica);
 	}
 }
