@@ -18,9 +18,6 @@ public class Juego {
 		miJugador = new Jugador("");
 		
 	}
-	public void salir() {
-		System.exit(0);
-	}
 	
 	public void cambiarNivel() {
 		generador.nuevoNivel();
@@ -52,6 +49,9 @@ public class Juego {
 	public Bloque getBloque(int x, int y) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public Ranking getMiRanking() {
+		return miRanking;
 	}
 
 }
