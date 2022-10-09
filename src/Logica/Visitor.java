@@ -1,4 +1,6 @@
 package Logica;
+import java.util.ArrayList;
+
 import Entidades.*;
 
 public interface Visitor {
@@ -21,6 +23,9 @@ public interface Visitor {
 	
 	public void visitarRojo(Roja r);
 	
-	public void visitarCuerpo(Pared p);
+	public void visitarCuerpo(Cuerpo p);
+	
+
+	public void procesarColisiones(ArrayList<Entidad> entidades);
 	
 }

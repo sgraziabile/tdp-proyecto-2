@@ -2,6 +2,7 @@ package Entidades;
 
 import GUI.EntidadGrafica;
 import Logica.SerpienteLogica;
+import Logica.Visitor;
 
 public abstract class Entidad {
 	protected int x;
@@ -36,4 +37,6 @@ public abstract class Entidad {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	public abstract void aceptar(Visitor v); 
 }

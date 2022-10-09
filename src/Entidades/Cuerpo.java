@@ -1,6 +1,7 @@
 package Entidades;
 
 import Logica.SerpienteLogica;
+import Logica.Visitor;
 
 public class Cuerpo extends Entidad{
 	protected Cuerpo siguiente;
@@ -23,6 +24,11 @@ public class Cuerpo extends Entidad{
 	public int getY() {
 		return y;
 	}
+	
+	public void aceptar(Visitor v) {
+		v.visitarCuerpo(this);
+	}
+	
 	@Override
 	public void afectarSerpiente(SerpienteLogica snake) {
 		// TODO Auto-generated method stub

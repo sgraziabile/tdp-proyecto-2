@@ -2,6 +2,7 @@ package Entidades;
 
 
 import Logica.SerpienteLogica;
+import Logica.Visitor;
 
 public class Sandia extends Alimento{
 	public Sandia() {
@@ -10,4 +11,9 @@ public class Sandia extends Alimento{
 	public void afectarSerpiente(SerpienteLogica snake) {
 		
 	}
+	public void aceptar(Visitor v) {
+		v.visitarSandia(this);
+	}
+	
+	
 }

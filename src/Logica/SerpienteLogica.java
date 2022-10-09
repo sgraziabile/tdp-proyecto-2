@@ -58,5 +58,10 @@ public class SerpienteLogica  {
 		miReloj.setVelocidad(v);
 	}
 	
+	
+	public Cuerpo getCabeza() {
+		return cabeza;
+	}
+	
 	//preguntar si va cambiar puntaje o no
 }

@@ -1,6 +1,7 @@
 package Entidades;
 
 import Logica.SerpienteLogica;
+import Logica.Visitor;
 
 public class Azul extends PowerUp{
 	public Azul() {
@@ -8,5 +9,8 @@ public class Azul extends PowerUp{
 	}
 	public void afectarSerpiente(SerpienteLogica snake) {
 			
+	}
+	public void aceptar(Visitor v) {
+		v.visitarAzul(this);
 	}
 }

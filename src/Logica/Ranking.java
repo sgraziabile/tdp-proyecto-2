@@ -26,15 +26,18 @@ public class Ranking {
 					establecido = true;
 			}
 			//SE PUEDE MOVER LA ESCRITURA AL MÉTODO SALIR() DE LA CLASE JUEGO
-			for(int i = 0; i <= cont; i++) {
-				try {
-					Escribir.guardar(arregloJugadores[i]);
-				} catch(FileNotFoundException e) { 
-					System.out.println(e.getMessage());
+				for(int i = 0; i <= cont; i++) {
+						try {
+							Escribir.guardar(arregloJugadores[i]);
+						} catch(FileNotFoundException e) { 
+							System.out.println(e.getMessage());
+							}
+						  catch(IOException e) {
+								System.out.println(e.getMessage());
+					  }
+					}
 				}
-				  catch(IOException e) {
-						System.out.println(e.getMessage());
-				}
+			}
 	private void swap(int i, int j, Jugador newPlayer) {
 		Jugador aux = arregloJugadores[j];
 		arregloJugadores[j] = newPlayer;
