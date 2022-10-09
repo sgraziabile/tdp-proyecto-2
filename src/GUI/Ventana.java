@@ -97,6 +97,7 @@ public class Ventana extends JFrame {
 		eg.grafica.setBounds(eg.miEntidad.getX(), eg.miEntidad.getY(), eg.miEntidad.getAlto(), eg.miEntidad.getAncho());
 		contentPane.add(eg.grafica);
 	}
+	
 	public void mostrarRanking() {
 		JFrame ranking = new JFrame();
 		JLabel aux = new JLabel();
@@ -117,6 +118,7 @@ public class Ventana extends JFrame {
 			public void WindowClosing(WindowEvent we) {
 				setVisible(true);
 				juego.setVisible(false);
+				
 			}
 		});
 	}
