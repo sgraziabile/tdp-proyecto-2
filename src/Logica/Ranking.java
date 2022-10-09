@@ -10,7 +10,6 @@ public class Ranking {
 	public Jugador[] getJugadores() {
 		return arregloJugadores;
 	}
-	
 	public void agregarJugador(Jugador newPlayer) {
 		int cont = 4;
 		boolean establecido = false;
@@ -36,9 +35,6 @@ public class Ranking {
 				  catch(IOException e) {
 						System.out.println(e.getMessage());
 				}
-			}
-		}
-	}
 	private void swap(int i, int j, Jugador newPlayer) {
 		Jugador aux = arregloJugadores[j];
 		arregloJugadores[j] = newPlayer;
