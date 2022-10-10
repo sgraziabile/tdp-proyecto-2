@@ -3,16 +3,7 @@ package Logica;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import Entidades.Azul;
-import Entidades.Banana;
-import Entidades.Entidad;
-import Entidades.Frutilla;
-import Entidades.Manzana;
-import Entidades.Pared;
-import Entidades.Roja;
-import Entidades.Sandia;
-import Entidades.Uva;
-import Entidades.Verde;
+import Entidades.*;
 import GUI.Ventana;
 
 public class Juego {
@@ -50,13 +41,17 @@ public class Juego {
 	public void cambiarNivel(int i) {
 		String rutaArchivo;
 		switch(i){
-			case 1: rutaArchivo="Niveles/Nivel1.txt";break; 
+			case 1: rutaArchivo="Niveles/Nivel1.txt";break;
+			
 			//Completar despues con los niveles.
 			default:  rutaArchivo="Niveles/Nivel1.txt";
 		}
+		miVentana.setBounds(miVentana.getX(), miVentana.getY(), miVentana.getWidth()+10, miVentana.getHeight());
+		
 		
 		try {
 			misEntidades=GeneradorNiveles.cargarNivel(rutaArchivo,this);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

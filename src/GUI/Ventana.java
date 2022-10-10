@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -44,9 +43,9 @@ public class Ventana extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana() {
+		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("Imagenes\\serpienteLogo.jpg"));
 		setTitle("Snake");
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 360);
 		contentPaneMenu = new JPanel();
@@ -123,8 +122,9 @@ public class Ventana extends JFrame {
 		contentPaneMenu.setVisible(false);
 		contentPaneJuego.setVisible(true);
 		setContentPane(contentPaneJuego);
-		miJuego.jugar();		
+		miJuego.jugar();
 	}
+	
 	
 	public void gameOver() {
 		//mostrar gameOver
@@ -150,8 +150,6 @@ public class Ventana extends JFrame {
 	
 	public void actualizarGrafica(EntidadGrafica eg) {
 		eg.grafica.setBounds(eg.miEntidad.getX(), eg.miEntidad.getY(), eg.miEntidad.getAlto(), eg.miEntidad.getAncho());
-		
-		
 		contentPaneJuego.add(eg.grafica);
 	}
 	
@@ -183,4 +181,7 @@ public class Ventana extends JFrame {
 		panel.add(jugadores);
 		panel.add(top5);
 	}
+	
+	
+	
 }
