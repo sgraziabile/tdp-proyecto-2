@@ -14,13 +14,23 @@ public class Juego {
 	protected SerpienteLogica miSerpiente;
 	protected Tablero miTablero;
 	protected Ventana miVentana;
+	protected int direccion;
 	
 	public Juego() {
 		miRanking = new Ranking();
 		miJugador = new Jugador();
 	}
+	
+	public int getDireccion() {
+		return direccion;
+	}
+	
+	public SerpienteLogica getSerpiente() {
+		return miSerpiente;
+	}
+	
 	public void jugar() {
-		
+		miSerpiente = new SerpienteLogica();
 	}
 	
 	public void cambiarNivel() {
@@ -62,6 +72,10 @@ public class Juego {
 	}
 	public Jugador getJugador() {
 		return miJugador;
+	}
+	
+	public Ventana getVentana() {
+		return miVentana;
 	}
 	
 	private int primerDigito(int num) {

@@ -9,13 +9,15 @@ import Entidades.Entidad;
 
 public class EntidadGrafica {
 	protected JLabel grafica;
-	protected String[] rutas;
+	protected String[] rutas;	
+	protected Ventana ventana;	
 	protected Entidad miEntidad;
-	protected Ventana ventana;
 	
-	public EntidadGrafica() {
+	public EntidadGrafica(Ventana v, Entidad e) {
 		grafica = new JLabel();
 		rutas = new String[] {"Azul","Roja","Verde","Banana","Manzana", "Sandia","Uva", "Frutilla", "Pared", "Cabeza", "Cola" };
+		ventana = v;
+		miEntidad = e;
 		//poner la ruta a cada imagen, NO CAMBIAR EL ORDEN DE LAS COSAS
 		//src/Imagenes/azul.jpg por ejemplo
 	}
@@ -28,6 +30,10 @@ public class EntidadGrafica {
 	
 	public JLabel getImage() {
 		return grafica;
+	}
+	
+	public Entidad getEntidad() {
+		return miEntidad;
 	}
 	
 	public void actualizarGrafica() {

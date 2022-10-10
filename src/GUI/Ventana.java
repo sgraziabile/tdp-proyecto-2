@@ -9,8 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Logica.Juego;
-import Logica.Jugador;
+import Logica.*;
 
 import java.awt.Color;
 import java.awt.Window.Type;
@@ -25,6 +24,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
+
+import Entidades.Cuerpo;
 
 public class Ventana extends JFrame {
 
@@ -99,7 +100,7 @@ public class Ventana extends JFrame {
 				System.exit(WIDTH);
 			}
 		});
-		btnSalir.setBounds(232, 230, 114, 33);
+		btnSalir.setBounds(232, 229, 114, 33);
 		contentPaneMenu.add(btnSalir);
 		
 		JLabel lblTitulo2 = new JLabel("The Game");
@@ -125,13 +126,16 @@ public class Ventana extends JFrame {
 		botonVolver(contentPaneRanking);
 		
 	}
+	
 	public void mostrarJuego() {
 		contentPaneMenu.setVisible(false);
 		contentPaneJuego.setVisible(true);
 		setContentPane(contentPaneJuego);
+		miJuego.jugar();
 		gameOver();
 		
 	}
+	
 	public void gameOver() {
 		//mostrar gameOver
 		
