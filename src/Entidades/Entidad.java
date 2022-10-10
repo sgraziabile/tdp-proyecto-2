@@ -7,8 +7,8 @@ import Logica.Visitor;
 public abstract class Entidad {
 	protected int x;
 	protected int y;
-	protected final int alto = 5;
-	protected final int ancho = 5;
+	protected final int alto = 20;
+	protected final int ancho=20;
 	protected EntidadGrafica miGrafica;
 	
 	public abstract void afectarSerpiente(SerpienteLogica snake);

@@ -5,11 +5,7 @@ public class Ranking {
 	protected Jugador[] arregloJugadores;
 	
 	public Ranking() {
-		try {
-			arregloJugadores = Leer.leer();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		arregloJugadores = new Jugador[5];
 	}
 	
 	public Jugador[] getJugadores() {

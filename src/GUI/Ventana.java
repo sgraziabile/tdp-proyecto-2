@@ -1,32 +1,24 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 import Logica.*;
-
 import java.awt.Color;
-import java.awt.Window.Type;
 import java.awt.Toolkit;
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.GridLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
-import Entidades.Cuerpo;
 
+@SuppressWarnings("serial")
 public class Ventana extends JFrame {
 
 	private JPanel contentPaneMenu, contentPaneJuego, contentPaneRanking;
@@ -52,7 +44,7 @@ public class Ventana extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("src\\Imagenes\\serpienteLogo.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("Imagenes\\serpienteLogo.jpg"));
 		setTitle("Snake");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,7 +105,7 @@ public class Ventana extends JFrame {
 		lblTituloSnake.setFont(new Font("Verdana", Font.BOLD, 20));
 		contentPaneMenu.add(lblTituloSnake);
 		
-		miJuego = new Juego();
+		miJuego = new Juego(this);
 		
 	}
 	
@@ -122,7 +114,7 @@ public class Ventana extends JFrame {
 		contentPaneRanking.setVisible(true);
 		setContentPane(contentPaneRanking);
 		
-		//setLblRanking(contentPaneRanking);
+		setLblRanking(contentPaneRanking);
 		botonVolver(contentPaneRanking);
 		
 	}
@@ -131,9 +123,7 @@ public class Ventana extends JFrame {
 		contentPaneMenu.setVisible(false);
 		contentPaneJuego.setVisible(true);
 		setContentPane(contentPaneJuego);
-		miJuego.jugar();
-		gameOver();
-		
+		miJuego.jugar();		
 	}
 	
 	public void gameOver() {
@@ -160,6 +150,8 @@ public class Ventana extends JFrame {
 	
 	public void actualizarGrafica(EntidadGrafica eg) {
 		eg.grafica.setBounds(eg.miEntidad.getX(), eg.miEntidad.getY(), eg.miEntidad.getAlto(), eg.miEntidad.getAncho());
+		
+		
 		contentPaneJuego.add(eg.grafica);
 	}
 	
@@ -185,8 +177,10 @@ public class Ventana extends JFrame {
 	private void setLblRanking(JPanel panel) {
 		Jugador[] ranking = miJuego.getMiRanking().getJugadores();
 		JLabel top5 = new JLabel("TOP 5");
-		JLabel jugadores = new JLabel(""+ranking[0]+"\n"+"x");
+		//cambiar bounds
+		JLabel jugadores = new JLabel(""+ranking[0]+"\n"+ranking[1]+"\n"+ranking[2]+"\n"+ranking[3]+"\n"+ranking[4]+"\n");
 		jugadores.setBounds(244, 205, 89, 23);
 		panel.add(jugadores);
+		panel.add(top5);
 	}
 }

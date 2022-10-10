@@ -38,10 +38,10 @@ public class ColisionVisitor implements Visitor {
 	}
 
 	
-	public void visitarSandia(Sandia s) {
-		boolean colisiono=verColisiones(snake.getCabeza(),s);
+	public void visitarPera(Pera p) {
+		boolean colisiono=verColisiones(snake.getCabeza(),p);
 		if(colisiono)
-			s.afectarSerpiente(snake);
+			p.afectarSerpiente(snake);
 		
 	}
 
