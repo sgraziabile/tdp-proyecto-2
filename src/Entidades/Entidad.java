@@ -16,6 +16,11 @@ public abstract class Entidad {
 	public EntidadGrafica getMiGrafica() {
 		return miGrafica;
 	}
+	
+	public void setGrafica(int i) {
+		miGrafica.setImagen(i);
+		miGrafica.actualizarGrafica();
+	}
 
 	public int getX() {
 		return x;
