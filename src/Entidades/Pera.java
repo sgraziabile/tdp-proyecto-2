@@ -6,8 +6,8 @@ import GUI.Ventana;
 import Logica.SerpienteLogica;
 import Logica.Visitor;
 
-public class Sandia extends Alimento{
-	public Sandia(int x, int y, Ventana v) {
+public class Pera extends Alimento{
+	public Pera(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;	
 		miGrafica = new EntidadGrafica(v, this);
@@ -17,7 +17,7 @@ public class Sandia extends Alimento{
 		
 	}
 	public void aceptar(Visitor v) {
-		v.visitarSandia(this);
+		v.visitarPera(this);
 	}
 	
 	

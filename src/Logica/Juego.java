@@ -16,9 +16,10 @@ public class Juego {
 	protected Ventana miVentana;
 	protected int direccion;
 	
-	public Juego() {
+	public Juego(Ventana v) {
 		miRanking = new Ranking();
 		miJugador = new Jugador();
+		miVentana = v;
 	}
 	
 	public int getDireccion() {
@@ -30,7 +31,7 @@ public class Juego {
 	}
 	
 	public void jugar() {
-		miSerpiente = new SerpienteLogica();
+		miSerpiente = new SerpienteLogica(this);
 	}
 	
 	public void cambiarNivel() {

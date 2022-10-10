@@ -11,7 +11,7 @@ public interface Visitor {
 	
 	public void visitarUva(Uva u);
 	
-	public void visitarSandia(Sandia s);
+	public void visitarPera(Pera p);
 	
 	public void visitarManzana(Manzana m);
 	

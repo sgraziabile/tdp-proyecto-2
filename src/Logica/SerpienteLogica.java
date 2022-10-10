@@ -11,9 +11,10 @@ public class SerpienteLogica  {
 	protected Juego miJuego;
 	protected RelojVelocidad miReloj;
 	
-	public SerpienteLogica() {
+	public SerpienteLogica(Juego j) {
+		miJuego = j;
 		cuerpo = new ArrayList<Cuerpo>();
-		cabeza = new Cuerpo(10, 10);
+		cabeza = new Cuerpo(10, 10, miJuego.miVentana);
 		cabeza.getMiGrafica().setImagen(9);
 		cabeza.setX(10);
 		cabeza.setY(10);
