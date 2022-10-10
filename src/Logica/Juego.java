@@ -3,19 +3,23 @@ package Logica;
 import java.util.ArrayList;
 
 import Entidades.Entidad;
+import GUI.Ventana;
 
 public class Juego {
-	protected GeneradorNiveles generador;
+	protected static GeneradorNiveles generador;
 	protected ArrayList<Entidad> misEntidades;
 	protected Reloj cronometro;
 	protected Ranking miRanking;
 	protected Jugador miJugador;
 	protected SerpienteLogica miSerpiente;
 	protected Tablero miTablero;
+	protected Ventana miVentana;
 	
+	public Juego() {
+		miRanking = new Ranking();
+		miJugador = new Jugador();
+	}
 	public void jugar() {
-		//inicializar el jugador con un metodo por ventana que pida ingresar un string?
-		miJugador = new Jugador("");
 		
 	}
 	
@@ -30,6 +34,7 @@ public class Juego {
 	
 	public void decrementarEntidades(Entidad e) {
 		misEntidades.remove(e);
+		getBloque(primerDigito(e.getX()), primerDigito(e.getY())).desocupar(e);;
 		if(!activarEntidad())
 			cambiarNivel();
 	}
@@ -38,7 +43,10 @@ public class Juego {
 		if(misEntidades.isEmpty())
 			return false;
 		else {
-			//agregar una entidad random al tablero
+			 int random = (int) Math.floor(Math.random()*(0-misEntidades.size()+1)+misEntidades.size());
+			 Entidad ent = misEntidades.get(random);
+			 miVentana.actualizarGrafica(ent.getMiGrafica());
+			 getBloque(primerDigito(ent.getX()), primerDigito(ent.getY())).ocupar(ent);
 			return true;
 		}
 	}
@@ -46,12 +54,20 @@ public class Juego {
 	private void controlarColision() {
 		
 	}
-	public Bloque getBloque(int x, int y) {
-		// TODO Auto-generated method stub
-		return null;
+	public Bloque getBloque(int i, int j) {
+		return miTablero.getBloque(i, j);
 	}
 	public Ranking getMiRanking() {
 		return miRanking;
+	}
+	public Jugador getJugador() {
+		return miJugador;
+	}
+	
+	private int primerDigito(int num) {
+		Integer numero = Integer.parseInt(""+num);
+		int desplazamiento = Double.valueOf(Math.pow(10, numero.SIZE-1)).intValue();
+		return num/desplazamiento;
 	}
 
 }

@@ -23,7 +23,6 @@ public class Bloque {
 	public EntidadGrafica getRepresentacion() {
 		return miRepresentacion;
 	}
-	//se usa en algun momento??
 	
 	public void ocupar(Entidad e) {
 		misEntidades.add(e);

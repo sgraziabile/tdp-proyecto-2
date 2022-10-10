@@ -6,8 +6,9 @@ public class Jugador implements Serializable {
 	protected int puntuacion;
 	protected String nombre;
 	
-	public Jugador(String n) {
-		nombre = n;
+	public Jugador() {
+		puntuacion = 0;
+		nombre = "";
 	}
 	
 	public int getPuntuacion() {

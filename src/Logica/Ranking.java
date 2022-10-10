@@ -1,15 +1,29 @@
 package Logica;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 public class Ranking {
 	
-	protected Jugador[] arregloJugadores = new Jugador[5];
+	protected Jugador[] arregloJugadores;
+	
+	public Ranking() {
+		try {
+			arregloJugadores = Leer.leer();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public Jugador[] getJugadores() {
 		return arregloJugadores;
 	}
+	
+	public void setRanking() {
+		try {
+			arregloJugadores = Leer.leer();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void agregarJugador(Jugador newPlayer) {
 		int cont = 4;
 		boolean establecido = false;
