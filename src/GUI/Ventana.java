@@ -13,13 +13,14 @@ import java.awt.Toolkit;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
 
 @SuppressWarnings("serial")
-public class Ventana extends JFrame {
+public class Ventana extends JFrame implements KeyListener{
 
 	private JPanel contentPaneMenu, contentPaneJuego, contentPaneRanking;
 	private Juego miJuego;
@@ -122,7 +123,7 @@ public class Ventana extends JFrame {
 	public void mostrarJuego() {
 		contentPaneMenu.setVisible(false);
 		contentPaneJuego.setVisible(true);
-		contentPaneJuego.addKeyListener(new ListenerDireccion());
+		contentPaneJuego.addKeyListener(this);
 		setContentPane(contentPaneJuego);
 		miJuego.jugar();
 	}
@@ -183,7 +184,52 @@ public class Ventana extends JFrame {
 		panel.add(jugadores);
 		panel.add(top5);
 	}
-	
-	
-	
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            System.out.println("Izquierda");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            System.out.println("Derecha");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            System.out.println("up");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            System.out.println("down");
+        }
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            System.out.println("Izquierda");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            System.out.println("Derecha");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            System.out.println("up");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            System.out.println("down");
+        }
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            System.out.println("Izquierda");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            System.out.println("Derecha");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            System.out.println("up");
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            System.out.println("down");
+        }
+	}
 }
