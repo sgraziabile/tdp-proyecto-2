@@ -13,7 +13,7 @@ import java.awt.Toolkit;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
@@ -44,9 +44,9 @@ public class Ventana extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana() {
+		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("Imagenes\\serpienteLogo.jpg"));
 		setTitle("Snake");
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 360);
 		contentPaneMenu = new JPanel();
@@ -122,9 +122,11 @@ public class Ventana extends JFrame {
 	public void mostrarJuego() {
 		contentPaneMenu.setVisible(false);
 		contentPaneJuego.setVisible(true);
+		contentPaneJuego.addKeyListener(new ListenerDireccion());
 		setContentPane(contentPaneJuego);
-		miJuego.jugar();		
+		miJuego.jugar();
 	}
+	
 	
 	public void gameOver() {
 		//mostrar gameOver
@@ -150,8 +152,6 @@ public class Ventana extends JFrame {
 	
 	public void actualizarGrafica(EntidadGrafica eg) {
 		eg.grafica.setBounds(eg.miEntidad.getX(), eg.miEntidad.getY(), eg.miEntidad.getAlto(), eg.miEntidad.getAncho());
-		
-		
 		contentPaneJuego.add(eg.grafica);
 	}
 	
@@ -183,4 +183,7 @@ public class Ventana extends JFrame {
 		panel.add(jugadores);
 		panel.add(top5);
 	}
+	
+	
+	
 }

@@ -19,7 +19,7 @@ public class GeneradorNiveles {
 	 * @throws IOException Si no encuentra el archivo.
 	 */
 	public static ArrayList<Entidad> cargarNivel(String filename,Juego juego) throws IOException {
-        Tablero tablero=new Tablero(1000);
+        
         ArrayList lines = new ArrayList();
         ArrayList<Entidad> entidades=new ArrayList<Entidad>();
         int width = 0;
@@ -41,13 +41,14 @@ public class GeneradorNiveles {
             }
         }
         height = lines.size();
+        Tablero tablero=new Tablero(height);
 
         for (int j = 0; j < tablero.getTamanio(); j++) {
             String line = (String) lines.get(j);
             for (int i = 0; i < width; i++) {
                 if (i < line.length()) {
                     char ch = line.charAt(i);
-                    Entidad e=crearEntidad(i,j,ch,juego.getVentana(),entidades);
+                    Entidad e=crearEntidad(i*20,j*10,ch,juego.getVentana(),entidades);
                     if(e!=null) {
                     	tablero.getBloque(i, j).ocupar(e);
                     }
