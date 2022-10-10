@@ -19,7 +19,7 @@ public class GeneradorNiveles {
 	 * @throws IOException Si no encuentra el archivo.
 	 */
 	public static ArrayList<Entidad> cargarNivel(String filename,Juego juego) throws IOException {
-        Tablero tablero=new Tablero(30);
+        Tablero tablero=new Tablero(1000);
         ArrayList lines = new ArrayList();
         ArrayList<Entidad> entidades=new ArrayList<Entidad>();
         int width = 0;
@@ -42,13 +42,13 @@ public class GeneradorNiveles {
         }
         height = lines.size();
 
-        for (int j = 0; j < 30; j++) {
+        for (int j = 0; j < tablero.getTamanio(); j++) {
             String line = (String) lines.get(j);
             for (int i = 0; i < width; i++) {
                 if (i < line.length()) {
                     char ch = line.charAt(i);
                     Entidad e=crearEntidad(i,j,ch,juego.getVentana(),entidades);
-                    if(e!=null ) {
+                    if(e!=null) {
                     	tablero.getBloque(i, j).ocupar(e);
                     }
                     
@@ -78,7 +78,7 @@ public class GeneradorNiveles {
 			case 'b': nueva=new Banana(i,j,ventana);entidades.add(nueva);break;
 			case 'f': nueva=new Frutilla(i,j,ventana);entidades.add(nueva);break;
 			case 'u': nueva=new Uva(i,j,ventana);entidades.add(nueva);break;
-			case 's': nueva=new Sandia(i,j,ventana);entidades.add(nueva);break;
+			case 'p': nueva=new Pera(i,j,ventana);entidades.add(nueva);break;
 			case 'a': nueva=new Azul(i,j,ventana);entidades.add(nueva);break;
 			case 'r': nueva=new Roja(i,j,ventana);entidades.add(nueva);break;
 			case 'v': nueva=new Verde(i,j,ventana);entidades.add(nueva);break;

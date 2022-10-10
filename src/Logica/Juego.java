@@ -16,7 +16,6 @@ import Entidades.Verde;
 import GUI.Ventana;
 
 public class Juego {
-	protected static GeneradorNiveles generador;
 	protected ArrayList<Entidad> misEntidades;
 	protected Reloj cronometro;
 	protected Ranking miRanking;
@@ -57,7 +56,7 @@ public class Juego {
 		}
 		
 		try {
-			misEntidades=generador.cargarNivel(rutaArchivo,this);
+			misEntidades=GeneradorNiveles.cargarNivel(rutaArchivo,this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
