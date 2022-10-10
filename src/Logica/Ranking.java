@@ -23,33 +23,60 @@ public class Ranking {
 			e.printStackTrace();
 		}
 	}
-	
 	public void agregarJugador(Jugador newPlayer) {
-		int cont = 4;
-		boolean establecido = false;
+		int cont = this.cantJugadores();
 		int puntos = newPlayer.getPuntuacion();
-		if(puntos >= arregloJugadores[cont].getPuntuacion()) {
-			arregloJugadores[cont] = newPlayer;
-			//ORDENAR
-			while(cont > 0 && !establecido) {
-				if(puntos >= arregloJugadores[cont - 1].getPuntuacion()) {
-					swap(cont, cont - 1, newPlayer);
-					cont--;
+		if(cont < this.getJugadores().length) {
+			if(arregloJugadores[cont] == null) { //no está lleno
+				arregloJugadores[cont] = newPlayer;
+				ordenar(cont, puntos, newPlayer);
+				try {
+					Escribir.guardar(arregloJugadores);
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
 				}
-				else
-					establecido = true;
 			}
-			//SE PUEDE MOVER LA ESCRITURA AL MÉTODO SALIR() DE LA CLASE JUEGO
-						try {
-						Escribir.guardar(arregloJugadores);
-						} catch(Exception e) {
-							System.out.println(e.getMessage());
-						}
 		}
-}
+		else {
+			cont = this.getJugadores().length - 1;
+			if(puntos >= arregloJugadores[cont].getPuntuacion()) {	//está lleno
+				arregloJugadores[cont] = newPlayer;
+				//ORDENAR
+				ordenar(cont, puntos, newPlayer);
+				//SE PUEDE MOVER LA ESCRITURA AL MÉTODO SALIR() DE LA CLASE JUEGO
+				try {
+					Escribir.guardar(arregloJugadores);
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+	}
+	private void ordenar(int cont, int puntos, Jugador newPlayer) {
+		boolean establecido = false;
+		while(cont > 0 && !establecido) {
+			if(puntos >= arregloJugadores[cont - 1].getPuntuacion()) {
+				swap(cont, cont - 1, newPlayer);
+				cont--;
+			}
+			else
+				establecido = true;
+		}
+	}
 	private void swap(int i, int j, Jugador newPlayer) {
 		Jugador aux = arregloJugadores[j];
 		arregloJugadores[j] = newPlayer;
 		arregloJugadores[i] = aux;
 	}
+	private int cantJugadores() {
+		int cont = 0; boolean fin = false;
+		for(int i = 0; i < arregloJugadores.length && !fin; i++) {
+			if(arregloJugadores[i] != null)
+				cont++;
+			else
+				fin = true;
+		}
+		return cont;
+	}
 }
+
