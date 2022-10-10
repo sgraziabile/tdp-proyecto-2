@@ -1,8 +1,18 @@
 package Logica;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import Entidades.Azul;
+import Entidades.Banana;
 import Entidades.Entidad;
+import Entidades.Frutilla;
+import Entidades.Manzana;
+import Entidades.Pared;
+import Entidades.Roja;
+import Entidades.Sandia;
+import Entidades.Uva;
+import Entidades.Verde;
 import GUI.Ventana;
 
 public class Juego {
@@ -17,8 +27,8 @@ public class Juego {
 	protected int direccion;
 	
 	public Juego() {
-		miRanking = new Ranking();
-		miJugador = new Jugador();
+		//miRanking = new Ranking();
+		//miJugador = new Jugador();
 	}
 	
 	public int getDireccion() {
@@ -29,24 +39,40 @@ public class Juego {
 		return miSerpiente;
 	}
 	
+	
 	public void jugar() {
 		miSerpiente = new SerpienteLogica();
+		cambiarNivel(1);
+		
 	}
 	
-	public void cambiarNivel() {
-		generador.nuevoNivel();
+	public void cambiarNivel(int i) {
+		String rutaArchivo;
+		switch(i){
+			case 1: rutaArchivo="Niveles/Nivel1.txt";break; 
+			//Completar despues con los niveles.
+			default:  rutaArchivo="Niveles/Nivel1.txt";
+		}
+		
+		try {
+			misEntidades=generador.cargarNivel(rutaArchivo,this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		activarEntidad();
 	}
 	
 	public void moverSerpiente(int direccion) {
 		//mover
-		controlarColision();
+		;
 	}
 	
 	public void decrementarEntidades(Entidad e) {
 		misEntidades.remove(e);
 		getBloque(primerDigito(e.getX()), primerDigito(e.getY())).desocupar(e);;
 		if(!activarEntidad())
-			cambiarNivel();
+			cambiarNivel(1);
 	}
 	
 	private boolean activarEntidad(){
@@ -61,9 +87,7 @@ public class Juego {
 		}
 	}
 	
-	private void controlarColision() {
-		
-	}
+	
 	public Bloque getBloque(int i, int j) {
 		return miTablero.getBloque(i, j);
 	}
@@ -76,6 +100,10 @@ public class Juego {
 	
 	public Ventana getVentana() {
 		return miVentana;
+	}
+	
+	public void setTablero(Tablero t) {
+		miTablero=t;
 	}
 	
 	private int primerDigito(int num) {

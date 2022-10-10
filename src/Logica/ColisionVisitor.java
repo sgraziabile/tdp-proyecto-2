@@ -3,8 +3,8 @@ import Entidades.*;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 public class ColisionVisitor implements Visitor {
@@ -94,7 +94,7 @@ public class ColisionVisitor implements Visitor {
 	}
 
 	
-	public void procesarColisiones(ArrayList<Entidad> entidades) {
+	public void procesarColisiones(List<Entidad> entidades) {
 		Iterator<Entidad> it=entidades.iterator();
 		Entidad aux=null;
 		while(it.hasNext()) {

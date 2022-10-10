@@ -10,16 +10,18 @@ public class SerpienteLogica  {
 	protected Cuerpo cabeza;
 	protected Juego miJuego;
 	protected RelojVelocidad miReloj;
+	private ColisionVisitor visitor;
 	
 	public SerpienteLogica() {
 		cuerpo = new ArrayList<Cuerpo>();
-		cabeza = new Cuerpo(10, 10);
+		cabeza = new Cuerpo(10, 10,miJuego.getVentana());
 		cabeza.getMiGrafica().setImagen(9);
 		cabeza.setX(10);
 		cabeza.setY(10);
 		cuerpo.add(cabeza);
 		agregarBloque(cabeza.getX()+5, cabeza.getY()+5);
 		agregarBloque(cabeza.getX()+5, cabeza.getY()+5);
+		visitor=new ColisionVisitor(this);
 	}
 	
 	public List<Cuerpo> getListaCuerpos(){
@@ -39,20 +41,13 @@ public class SerpienteLogica  {
 			cuerpo.remove(cuerpo.size()-1);
 		}
 		esteBloque = miJuego.miTablero.getBloque((int)cabeza.getX(), (int)cabeza.getY());
-		for (Entidad e: esteBloque.getEntidades())
-			if (colisiono(e)) {
-				//solucionar colision con visitor
-				break;
-			}
+		visitor.procesarColisiones(esteBloque.getEntidades());
+				
 		return pudo;
 	}
 	
 	public void crecer(int p) {
 		crecimiento = crecimiento + p;
-	}
-	
-	private boolean colisiono(Entidad e) {
-		return cabeza.getX()>=e.getX() && cabeza.getX()<=e.getX()+e.getAncho() && cabeza.getY()>=e.getY() && cabeza.getY()<=e.getY()+e.getAncho();
 	}
 	
 	private void agregarBloque(int x, int y) {

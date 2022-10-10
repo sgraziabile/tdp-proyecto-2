@@ -1,5 +1,8 @@
 package Logica;
 
+
+
+
 public class Tablero {
 	protected Bloque[][] grilla;
 	
@@ -13,4 +16,5 @@ public class Tablero {
 		return grilla[i][j];
 	}
 
+	
 }
