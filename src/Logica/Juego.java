@@ -1,18 +1,10 @@
 package Logica;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 
-import Entidades.Azul;
-import Entidades.Banana;
 import Entidades.Entidad;
-import Entidades.Frutilla;
-import Entidades.Manzana;
-import Entidades.Pared;
-import Entidades.Roja;
-import Entidades.Sandia;
-import Entidades.Uva;
-import Entidades.Verde;
 import GUI.Ventana;
 
 public class Juego {
@@ -64,9 +56,11 @@ public class Juego {
 		activarEntidad();
 	}
 	
-	public void moverSerpiente(int direccion) {
-		//mover
-		;
+	public synchronized void moverSerpiente(int direccion) {
+		
+		switch(direccion){
+			
+		}
 	}
 	
 	public void decrementarEntidades(Entidad e) {

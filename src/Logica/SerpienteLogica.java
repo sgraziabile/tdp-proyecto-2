@@ -30,7 +30,7 @@ public class SerpienteLogica  {
 		return cuerpo;
 	}
 	
-	public boolean mover(int x, int y) {
+	public synchronized boolean mover(int x, int y) {
 		boolean pudo = false;
 		Bloque esteBloque;
 		if (crecimiento>0) {

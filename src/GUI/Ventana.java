@@ -13,7 +13,7 @@ import java.awt.Toolkit;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
@@ -122,6 +122,7 @@ public class Ventana extends JFrame {
 	public void mostrarJuego() {
 		contentPaneMenu.setVisible(false);
 		contentPaneJuego.setVisible(true);
+		contentPaneJuego.addKeyListener(new ListenerDireccion());
 		setContentPane(contentPaneJuego);
 		miJuego.jugar();		
 	}
