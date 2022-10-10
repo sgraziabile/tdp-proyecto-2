@@ -13,7 +13,8 @@ public class Banana extends Alimento{
 		getMiGrafica().setImagen(3);
 	}
 	public void afectarSerpiente(SerpienteLogica snake) {
-		
+		snake.incrementarPuntuacion(50);
+		snake.crecer(3);
 	}
 	public void aceptar(Visitor v) {
 		v.visitarBanana(this);

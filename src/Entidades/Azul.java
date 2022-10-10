@@ -13,7 +13,8 @@ public class Azul extends PowerUp{
 		getMiGrafica().setImagen(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake) {
-			
+			snake.incrementarPuntuacion(50);
+			snake.crecer(3);
 	}
 	public void aceptar(Visitor v) {
 		v.visitarAzul(this);

@@ -4,7 +4,9 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 
+
 import Entidades.*;
+
 import GUI.Ventana;
 
 public class Juego {
@@ -42,12 +44,10 @@ public class Juego {
 	public void cambiarNivel(int i) {
 		String rutaArchivo;
 		switch(i){
-			case 1: rutaArchivo="Niveles/Nivel1.txt";break;
-			
+			case 1: rutaArchivo="Niveles/Nivel1.txt"; miVentana.setBounds(miVentana.getX(), miVentana.getY(), miVentana.getWidth()+10, miVentana.getHeight()); break;  
 			//Completar despues con los niveles.
 			default:  rutaArchivo="Niveles/Nivel1.txt";
 		}
-		miVentana.setBounds(miVentana.getX(), miVentana.getY(), miVentana.getWidth()+10, miVentana.getHeight());
 		
 		
 		try {
@@ -61,9 +61,11 @@ public class Juego {
 	}
 	
 	public synchronized void moverSerpiente(int direccion) {
-		
-		switch(direccion){
-			
+		switch(direccion) {	//1 es hacia arriba, 2 hacia la derecha, 3 hacia abajo y 4 hacia la izquierda
+		case 1: miSerpiente.mover(miSerpiente.getCabeza().getX(), miSerpiente.getCabeza().getY()+10);
+		case 2: miSerpiente.mover(miSerpiente.getCabeza().getX()+10, miSerpiente.getCabeza().getY());
+		case 3: miSerpiente.mover(miSerpiente.getCabeza().getX(), miSerpiente.getCabeza().getY()-10);
+		case 4: miSerpiente.mover(miSerpiente.getCabeza().getX()-10, miSerpiente.getCabeza().getY());
 		}
 	}
 	

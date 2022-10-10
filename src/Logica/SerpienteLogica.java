@@ -69,5 +69,7 @@ public class SerpienteLogica  {
 		return cabeza;
 	}
 	
-	//preguntar si va cambiar puntaje o no
+	public void incrementarPuntuacion(int x) {
+		miJuego.getJugador().setPuntuacion(miJuego.getJugador().getPuntuacion()+x);
+	}
 }
