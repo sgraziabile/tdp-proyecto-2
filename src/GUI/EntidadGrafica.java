@@ -9,7 +9,7 @@ import Entidades.Entidad;
 
 public class EntidadGrafica {
 	protected JLabel grafica;
-	protected final String[] rutas  = new String[] {"Imagenes\\azul.png","Imagenes\\roja.png","Imagenes\\verde.png","Imagenes\\platanos.png","Imagenes\\manzana.png", "Imagenes\\pera.png","Imagenes\\uvas.png", "Imagenes\\fresa.png", "Imagenes\\pared.png", "Imagenes\\pera.png", "Imagenes\\uvas.png" };;	
+	protected final String[] rutas  = new String[] {"Imagenes\\azul.png","Imagenes\\roja.png","Imagenes\\verde.png","Imagenes\\platanos.png","Imagenes\\manzana.png", "Imagenes\\pera.png","Imagenes\\uvas.png", "Imagenes\\fresa.png", "Imagenes\\pared.png", "Imagenes\\Cabeza-normal.png", "Imagenes\\Cabeza-Roja.png", "Imagenes\\Cabeza-Verde.png", "Imagenes\\Cuerpo-Normal.png", "Imagenes\\Cuerpo-Rojo.png", "Imagenes\\Cuerpo-Verde.png" };;	
 	protected Ventana ventana;	
 	protected Entidad miEntidad;
 	

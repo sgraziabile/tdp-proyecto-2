@@ -12,7 +12,7 @@ public class Cuerpo extends Entidad{
 		this.x = x;
 		this.y = y;	
 		miGrafica = new EntidadGrafica(v, this);
-		getMiGrafica().setImagen(10);
+		setGrafica(12);
 	}
 	
 	public void aceptar(Visitor v) {

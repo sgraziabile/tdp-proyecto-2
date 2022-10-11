@@ -11,10 +11,12 @@ public class Roja extends PowerUp{
 		this.x = x;
 		this.y = y;	
 		miGrafica = new EntidadGrafica(v, this);
-		getMiGrafica().setImagen(1);
+		setGrafica(1);
 	}
 	public void afectarSerpiente(SerpienteLogica snake) {
-			
+		snake.incrementarPuntuacion(50);
+		snake.crecer(3);
+		snake.cambiarGrafica(1);
 	}
 	public void aceptar(Visitor v) {
 		v.visitarRojo(this);

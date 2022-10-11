@@ -10,10 +10,11 @@ public class Uva extends Alimento{
 		this.x = x;
 		this.y = y;	
 		miGrafica = new EntidadGrafica(v, this);
-		getMiGrafica().setImagen(6);
+		setGrafica(6);
 	}
 	public void afectarSerpiente(SerpienteLogica snake) {
-		
+		snake.incrementarPuntuacion(66);
+		snake.crecer(4);
 	}
 	
 	public void aceptar(Visitor v) {

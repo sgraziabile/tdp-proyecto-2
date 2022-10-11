@@ -72,4 +72,11 @@ public class SerpienteLogica  {
 	public void incrementarPuntuacion(int x) {
 		miJuego.getJugador().setPuntuacion(miJuego.getJugador().getPuntuacion()+x);
 	}
+	
+	public void cambiarGrafica(int i) {
+			cabeza.setGrafica(9);
+			for (Cuerpo c: cuerpo) {
+				c.setGrafica(i+9);
+			}
+	}
 }

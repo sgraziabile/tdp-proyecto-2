@@ -10,7 +10,7 @@ public class Banana extends Alimento{
 		this.x = x;
 		this.y = y;	
 		miGrafica = new EntidadGrafica(v, this);
-		getMiGrafica().setImagen(3);
+		setGrafica(3);
 	}
 	public void afectarSerpiente(SerpienteLogica snake) {
 		snake.incrementarPuntuacion(50);

@@ -11,7 +11,7 @@ public class Frutilla extends Alimento{
 		this.x = x;
 		this.y = y;	
 		miGrafica = new EntidadGrafica(v, this);
-		getMiGrafica().setImagen(7);
+		setGrafica(7);
 	}
 	public void afectarSerpiente(SerpienteLogica snake) {
 		snake.incrementarPuntuacion(25);

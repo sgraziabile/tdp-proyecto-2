@@ -10,7 +10,7 @@ public class Manzana extends Alimento{
 		this.x = x;
 		this.y = y;	
 		miGrafica = new EntidadGrafica(v, this);
-		getMiGrafica().setImagen(4);
+		setGrafica(4);
 	}
 	public void afectarSerpiente(SerpienteLogica snake) {
 		snake.incrementarPuntuacion(70);
