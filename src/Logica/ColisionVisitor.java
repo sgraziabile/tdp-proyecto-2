@@ -14,8 +14,6 @@ public class ColisionVisitor implements Visitor {
 		this.snake=snake;
 	}
 	
-	
-	
 	public void visitarPared(Pared p) {
 		boolean colisiono=verColisiones(snake.getCabeza(),p);
 		if(colisiono)

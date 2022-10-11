@@ -12,10 +12,10 @@ public class RelojVelocidad extends Thread {
 	}
 	
 	public void run() {
-		while(this.activo) {
+		while(this.activo) { //borrar activo y cambiar el hilo con start y stop desde afuera
 			try {
 				Thread.sleep(tiempoEspera);
-				miSerpiente.miJuego.moverSerpiente(miSerpiente.miJuego.getDireccion());;
+				miSerpiente.miJuego.moverSerpiente();
 			}
 			catch(InterruptedException e) {}
 		}

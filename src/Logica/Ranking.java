@@ -48,6 +48,15 @@ public class Ranking {
 			}
 		}
 	}
+	
+	public String getJugador(int i) {
+		String s = "";
+		if(arregloJugadores[i-1] != null) {
+			return s+i+"- "+arregloJugadores[i-1].getNombre() +" "+arregloJugadores[i-1].getPuntuacion();
+		}else {
+			return s+i+" - Jugador vacio ----";
+		}	
+	}
 	private void ordenar(int cont, int puntos, Jugador newPlayer) {
 		boolean establecido = false;
 		while(cont > 0 && !establecido) {

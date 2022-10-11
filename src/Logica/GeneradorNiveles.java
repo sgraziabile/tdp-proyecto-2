@@ -20,31 +20,31 @@ public class GeneradorNiveles {
 	 */
 	public static ArrayList<Entidad> cargarNivel(String filename,Juego juego) throws IOException {
         
-        ArrayList lines = new ArrayList();
+        ArrayList<String> lines = new ArrayList <String>();
         ArrayList<Entidad> entidades=new ArrayList<Entidad>();
         int width = 0;
         int height = 0;
         //Inicializamos el buffer de lectura.
         BufferedReader reader = new BufferedReader(new FileReader(filename));
-        while (true) {
-            String line = reader.readLine();
-            //Si no hay mas lineas para leer.
-            if (line == null) {
-                reader.close();
-                break;
-            }
-            //Nos salteamos las lineas que empiecen 
+        String line = reader.readLine();
+        while (line!=null) {
+            //String 
+             
             if (!line.startsWith("!")) {
                 lines.add(line);
                 width = Math.max(width, line.length());
 
             }
+            line = reader.readLine();
         }
+        reader.close();
+        
+        
         height = lines.size();
         Tablero tablero=new Tablero(height);
 
         for (int j = 0; j < tablero.getTamanio(); j++) {
-            String line = (String) lines.get(j);
+            line = lines.get(j);
             for (int i = 0; i < width; i++) {
                 if (i < line.length()) {
                     char ch = line.charAt(i);

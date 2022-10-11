@@ -15,14 +15,16 @@ public class SerpienteLogica  {
 	public SerpienteLogica(Juego j) {
 		miJuego = j;
 		cuerpo = new ArrayList<Cuerpo>();
-
-		cabeza = new Cuerpo(10, 10,miJuego.getVentana());
+		
+		miReloj = new RelojVelocidad(this, 300);
+		miReloj.start();
+		
+		cabeza = new Cuerpo(150, 150, miJuego.getVentana());
 		cabeza.getMiGrafica().setImagen(9);
-		cabeza.setX(10);
-		cabeza.setY(10);
 		cuerpo.add(cabeza);
-		agregarBloque(cabeza.getX()+5, cabeza.getY()+5);
-		agregarBloque(cabeza.getX()+5, cabeza.getY()+5);
+		agregarBloque(20, 0);
+		agregarBloque(20, 0);
+		
 		visitor=new ColisionVisitor(this);
 	}
 	
@@ -39,11 +41,11 @@ public class SerpienteLogica  {
 		}
 		else {
 			agregarBloque(x,y);
-			miJuego.getBloque(cuerpo.get(cuerpo.size()-1).getX(), cuerpo.get(cuerpo.size()-1).getY());
-			cuerpo.remove(cuerpo.size()-1);
+			cuerpo.get(cuerpo.size()-1).getMiGrafica().borrarGrafica();
+			cuerpo.remove(cuerpo.get(cuerpo.size()-1));
 		}
-		esteBloque = miJuego.miTablero.getBloque((int)cabeza.getX(), (int)cabeza.getY());
-		visitor.procesarColisiones(esteBloque.getEntidades());
+		//esteBloque = miJuego.miTablero.getBloque((int)cabeza.getX(), (int)cabeza.getY());
+		//visitor.procesarColisiones(esteBloque.getEntidades());
 				
 		return pudo;
 	}
@@ -57,6 +59,7 @@ public class SerpienteLogica  {
 		cabeza.setX(cabeza.getX()+x);
 		cabeza.setY(cabeza.getY()+y);
 		cuerpo.add(1, nuevo);
+		cabeza.getMiGrafica().actualizarGrafica();
 		nuevo.getMiGrafica().actualizarGrafica();
 	}
 	
@@ -73,7 +76,7 @@ public class SerpienteLogica  {
 		miJuego.getJugador().setPuntuacion(miJuego.getJugador().getPuntuacion()+x);
 	}
 	
-	public void cambiarGrafica(int i) {
+	public void cambiarGrafica(int i) { //poner bien esto
 			cabeza.setGrafica(9);
 			for (Cuerpo c: cuerpo) {
 				c.setGrafica(i+9);

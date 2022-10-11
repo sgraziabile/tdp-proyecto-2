@@ -23,12 +23,18 @@ public class Juego {
 		miRanking = new Ranking();
 		miJugador = new Jugador();
 		miVentana = v;
+		direccion = 2;
 
 	}
 	
 	public int getDireccion() {
 		return direccion;
 	}
+	
+	public void setDireccion(int d) {
+		direccion = d;
+	}
+
 	
 	public SerpienteLogica getSerpiente() {
 		return miSerpiente;
@@ -60,12 +66,12 @@ public class Juego {
 		activarEntidad();
 	}
 	
-	public synchronized void moverSerpiente(int direccion) {
+	public synchronized void moverSerpiente() {
 		switch(direccion) {	//1 es hacia arriba, 2 hacia la derecha, 3 hacia abajo y 4 hacia la izquierda
-		case 1: miSerpiente.mover(miSerpiente.getCabeza().getX(), miSerpiente.getCabeza().getY()+10);
-		case 2: miSerpiente.mover(miSerpiente.getCabeza().getX()+10, miSerpiente.getCabeza().getY());
-		case 3: miSerpiente.mover(miSerpiente.getCabeza().getX(), miSerpiente.getCabeza().getY()-10);
-		case 4: miSerpiente.mover(miSerpiente.getCabeza().getX()-10, miSerpiente.getCabeza().getY());
+		case 1: miSerpiente.mover(0, -20); break;
+		case 2: miSerpiente.mover(20, 0);  break;
+		case 3: miSerpiente.mover(0, 20); break;
+		case 4: miSerpiente.mover(-20, 0); break;
 		}
 	}
 	
