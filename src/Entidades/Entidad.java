@@ -1,17 +1,18 @@
 package Entidades;
 
 import GUI.EntidadGrafica;
+import Logica.Juego;
 import Logica.SerpienteLogica;
 import Logica.Visitor;
 
 public abstract class Entidad {
 	protected int x;
 	protected int y;
-	protected final int alto = 20;
+	protected final int alto =20;
 	protected final int ancho=20;
 	protected EntidadGrafica miGrafica;
 	
-	public abstract void afectarSerpiente(SerpienteLogica snake);
+	public abstract void afectarSerpiente(SerpienteLogica snake,Juego juego);
 	
 	public EntidadGrafica getMiGrafica() {
 		return miGrafica;

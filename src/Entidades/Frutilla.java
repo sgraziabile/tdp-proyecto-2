@@ -3,6 +3,7 @@ package Entidades;
 
 import GUI.EntidadGrafica;
 import GUI.Ventana;
+import Logica.Juego;
 import Logica.SerpienteLogica;
 import Logica.Visitor;
 
@@ -13,9 +14,12 @@ public class Frutilla extends Alimento{
 		miGrafica = new EntidadGrafica(v, this);
 		setGrafica(7);
 	}
-	public void afectarSerpiente(SerpienteLogica snake) {
+	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		snake.incrementarPuntuacion(25);
 		snake.crecer(4);
+		miGrafica.borrarGrafica();
+		juego.decrementarEntidades(this);
+
 	}
 	public void aceptar(Visitor v) {
 		v.visitarFrutilla(this);

@@ -50,7 +50,7 @@ public class Juego {
 	public void cambiarNivel(int i) {
 		String rutaArchivo;
 		switch(i){
-			case 1: rutaArchivo="Niveles/Nivel1.txt"; miVentana.setBounds(miVentana.getX(), miVentana.getY(), miVentana.getWidth()+10, miVentana.getHeight()); break;  
+			case 1: rutaArchivo="Niveles/Nivel1.txt"; break;  
 			//Completar despues con los niveles.
 			default:  rutaArchivo="Niveles/Nivel1.txt";
 		}
@@ -86,7 +86,7 @@ public class Juego {
 		if(misEntidades.isEmpty())
 			return false;
 		else {
-			 int random = (int) Math.floor(Math.random()*(0-misEntidades.size()+1)+misEntidades.size());
+			 int random = (int) Math.floor(Math.random()*(0-misEntidades.size())+misEntidades.size());
 			 Entidad ent = misEntidades.get(random);
 			 miVentana.actualizarGrafica(ent.getMiGrafica());
 			 getBloque(primerDigito(ent.getX()), primerDigito(ent.getY())).ocupar(ent);

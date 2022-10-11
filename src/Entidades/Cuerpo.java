@@ -2,17 +2,18 @@ package Entidades;
 
 import GUI.EntidadGrafica;
 import GUI.Ventana;
+import Logica.Juego;
 import Logica.SerpienteLogica;
 import Logica.Visitor;
 
 public class Cuerpo extends Entidad{
 	protected Cuerpo siguiente;
 	
-	public Cuerpo(int x, int y, Ventana v) {
+	public Cuerpo(int x, int y, Ventana v,int color) {
 		this.x = x;
 		this.y = y;	
 		miGrafica = new EntidadGrafica(v, this);
-		setGrafica(12);
+		setGrafica(color);
 	}
 	
 	public void aceptar(Visitor v) {
@@ -20,9 +21,9 @@ public class Cuerpo extends Entidad{
 	}
 	
 	@Override
-	public void afectarSerpiente(SerpienteLogica snake) {
+	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		// TODO Auto-generated method stub
-		
+		System.out.println();
 	}
 
 }

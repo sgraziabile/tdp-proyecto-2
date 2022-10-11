@@ -48,7 +48,7 @@ public class GeneradorNiveles {
             for (int i = 0; i < width; i++) {
                 if (i < line.length()) {
                     char ch = line.charAt(i);
-                    Entidad e=crearEntidad(i*20,j*10,ch,juego.getVentana(),entidades);
+                    Entidad e=crearEntidad(i*20,j*20,ch,juego.getVentana(),entidades);
                     if(e!=null) {
                     	tablero.getBloque(i, j).ocupar(e);
                     }

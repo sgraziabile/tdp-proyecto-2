@@ -2,6 +2,7 @@ package Entidades;
 
 import GUI.EntidadGrafica;
 import GUI.Ventana;
+import Logica.Juego;
 import Logica.SerpienteLogica;
 import Logica.Visitor;
 
@@ -12,10 +13,13 @@ public class Verde extends PowerUp{
 		miGrafica = new EntidadGrafica(v, this);
 		setGrafica(2);
 	}
-	public void afectarSerpiente(SerpienteLogica snake) {
+	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		snake.incrementarPuntuacion(80);
 		snake.crecer(3);
 		snake.cambiarGrafica(3);
+		miGrafica.borrarGrafica();
+		juego.decrementarEntidades(this);
+
 	}
 	public void aceptar(Visitor v) {
 		v.visitarVerde(this);

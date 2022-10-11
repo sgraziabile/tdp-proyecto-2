@@ -11,21 +11,22 @@ public class SerpienteLogica  {
 	protected Juego miJuego;
 	protected RelojVelocidad miReloj;
 	private ColisionVisitor visitor;
+	private int colorSerpiente;
 	
 	public SerpienteLogica(Juego j) {
 		miJuego = j;
 		cuerpo = new ArrayList<Cuerpo>();
-		
+		colorSerpiente=9;
 		miReloj = new RelojVelocidad(this, 300);
 		miReloj.start();
 		
-		cabeza = new Cuerpo(150, 150, miJuego.getVentana());
+		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
 		cabeza.getMiGrafica().setImagen(9);
 		cuerpo.add(cabeza);
 		agregarBloque(20, 0);
 		agregarBloque(20, 0);
 		
-		visitor=new ColisionVisitor(this);
+		visitor=new ColisionVisitor(this,miJuego);
 	}
 	
 	public List<Cuerpo> getListaCuerpos(){
@@ -44,9 +45,9 @@ public class SerpienteLogica  {
 			cuerpo.get(cuerpo.size()-1).getMiGrafica().borrarGrafica();
 			cuerpo.remove(cuerpo.get(cuerpo.size()-1));
 		}
-		//esteBloque = miJuego.miTablero.getBloque((int)cabeza.getX(), (int)cabeza.getY());
-		//visitor.procesarColisiones(esteBloque.getEntidades());
-				
+
+		esteBloque = miJuego.miTablero.getBloque(cabeza.getX()/20, (int)cabeza.getY()/20);
+		visitor.procesarColisiones(esteBloque.getEntidades());
 		return pudo;
 	}
 	
@@ -55,7 +56,7 @@ public class SerpienteLogica  {
 	}
 	
 	private void agregarBloque(int x, int y) {
-		Cuerpo nuevo = new Cuerpo(cabeza.getX(), cabeza.getY(), miJuego.getVentana());
+		Cuerpo nuevo = new Cuerpo(cabeza.getX(), cabeza.getY(), miJuego.getVentana(),colorSerpiente+3);
 		cabeza.setX(cabeza.getX()+x);
 		cabeza.setY(cabeza.getY()+y);
 		cuerpo.add(1, nuevo);
@@ -76,10 +77,20 @@ public class SerpienteLogica  {
 		miJuego.getJugador().setPuntuacion(miJuego.getJugador().getPuntuacion()+x);
 	}
 	
-	public void cambiarGrafica(int i) { //poner bien esto
-			cabeza.setGrafica(9);
-			for (Cuerpo c: cuerpo) {
-				c.setGrafica(i+9);
+	public void cambiarGrafica(int i) { 
+			cabeza.getMiGrafica().setImagen(i+9);
+			cabeza.getMiGrafica().actualizarGrafica();
+			Iterator<Cuerpo> it=cuerpo.iterator();
+			Cuerpo aux=it.next();
+			while(it.hasNext()) {
+				aux=it.next();
+				aux.getMiGrafica().setImagen(i+12);
+				aux.getMiGrafica().actualizarGrafica();
 			}
+			setColor(i+9);
 	}
+	public void setColor(int i) {
+		colorSerpiente=i;
+	}
+	
 }

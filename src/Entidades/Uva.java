@@ -2,6 +2,7 @@ package Entidades;
 
 import GUI.EntidadGrafica;
 import GUI.Ventana;
+import Logica.Juego;
 import Logica.SerpienteLogica;
 import Logica.Visitor;
 
@@ -12,7 +13,7 @@ public class Uva extends Alimento{
 		miGrafica = new EntidadGrafica(v, this);
 		setGrafica(6);
 	}
-	public void afectarSerpiente(SerpienteLogica snake) {
+	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		snake.incrementarPuntuacion(66);
 		snake.crecer(4);
 	}
