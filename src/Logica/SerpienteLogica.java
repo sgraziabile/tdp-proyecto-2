@@ -16,12 +16,12 @@ public class SerpienteLogica  {
 	public SerpienteLogica(Juego j) {
 		miJuego = j;
 		cuerpo = new ArrayList<Cuerpo>();
-		colorSerpiente=9;
+		colorSerpiente=1;
 		miReloj = new RelojVelocidad(this, 300);
 		miReloj.start();
 		
 		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
-		cabeza.getMiGrafica().setImagen(9);
+		cabeza.getMiGrafica().setImagenSerpiente(colorSerpiente);
 		cuerpo.add(cabeza);
 		agregarBloque(20, 0);
 		agregarBloque(20, 0);
@@ -78,16 +78,16 @@ public class SerpienteLogica  {
 	}
 	
 	public void cambiarGrafica(int i) { 
-			cabeza.getMiGrafica().setImagen(i+9);
+			cabeza.getMiGrafica().setImagenSerpiente(i+1);
 			cabeza.getMiGrafica().actualizarGrafica();
 			Iterator<Cuerpo> it=cuerpo.iterator();
 			Cuerpo aux=it.next();
 			while(it.hasNext()) {
 				aux=it.next();
-				aux.getMiGrafica().setImagen(i+12);
+				aux.getMiGrafica().setImagenSerpiente(i+4);
 				aux.getMiGrafica().actualizarGrafica();
 			}
-			setColor(i+9);
+			setColor(i+1);
 	}
 	public void setColor(int i) {
 		colorSerpiente=i;

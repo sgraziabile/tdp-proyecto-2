@@ -10,8 +10,9 @@ public class Verde extends PowerUp{
 	public Verde(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;	
+		miRuta = "Imagenes\\verde.png";
 		miGrafica = new EntidadGrafica(v, this);
-		setGrafica(2);
+		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		snake.incrementarPuntuacion(80);

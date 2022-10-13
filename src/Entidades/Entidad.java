@@ -11,6 +11,7 @@ public abstract class Entidad {
 	protected final int alto =20;
 	protected final int ancho=20;
 	protected EntidadGrafica miGrafica;
+	protected String miRuta;
 	
 	public abstract void afectarSerpiente(SerpienteLogica snake,Juego juego);
 	
@@ -19,8 +20,14 @@ public abstract class Entidad {
 	}
 	
 	public void setGrafica(int i) {
-		miGrafica.setImagen(i);
-		miGrafica.actualizarGrafica();
+		if(i == 0) {
+			miGrafica.setImagen();
+			miGrafica.actualizarGrafica();
+		}else {
+			miGrafica.setImagenSerpiente(i);
+			miGrafica.actualizarGrafica();
+		}
+		
 	}
 
 	public int getX() {
@@ -36,6 +43,9 @@ public abstract class Entidad {
 	
 	public int getAncho() {
 		return ancho;
+	}
+	public String getMiRuta() {
+		return miRuta;
 	}
 	public void setX(int x) {
 		this.x = x;

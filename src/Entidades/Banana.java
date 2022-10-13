@@ -10,8 +10,9 @@ public class Banana extends Alimento{
 	public Banana(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;	
+		miRuta = "Imagenes\\platanos.png";
 		miGrafica = new EntidadGrafica(v, this);
-		setGrafica(3);
+		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		snake.incrementarPuntuacion(50);

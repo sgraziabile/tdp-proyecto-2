@@ -11,9 +11,10 @@ public class Pared extends Entidad{
 	public Pared(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;	
-		miGrafica = new EntidadGrafica(v, this);
 		this.v=v;
-		getMiGrafica().setImagen(8);
+		miRuta = "Imagenes\\pared.png";
+		miGrafica = new EntidadGrafica(v, this);
+		setGrafica(0);
 	}
 	
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {	

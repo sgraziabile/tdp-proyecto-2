@@ -10,9 +10,10 @@ import Logica.Visitor;
 public class Roja extends PowerUp{
 	public Roja(int x, int y, Ventana v) {
 		this.x = x;
-		this.y = y;	
+		this.y = y;
+		miRuta ="Imagenes\\roja.png";
 		miGrafica = new EntidadGrafica(v, this);
-		setGrafica(1);
+		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		snake.incrementarPuntuacion(50);
