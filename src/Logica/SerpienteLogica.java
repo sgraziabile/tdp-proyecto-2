@@ -46,7 +46,7 @@ public class SerpienteLogica  {
 			cuerpo.remove(cuerpo.get(cuerpo.size()-1));
 		}
 
-		esteBloque = miJuego.miTablero.getBloque((cabeza.getX()/20)+1,(cabeza.getY()/20)+1);
+		esteBloque = miJuego.miTablero.getBloque((cabeza.getX()/20),(cabeza.getY()/20));
 		visitor.procesarColisiones(esteBloque.getEntidades());
 		return pudo;
 	}
