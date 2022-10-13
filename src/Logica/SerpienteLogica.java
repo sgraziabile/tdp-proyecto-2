@@ -21,7 +21,7 @@ public class SerpienteLogica  {
 		miReloj.start();
 		
 		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
-		cabeza.getMiGrafica().setImagen(9);
+		//cabeza.getMiGrafica().setImagen();
 		cuerpo.add(cabeza);
 		agregarBloque(20, 0);
 		agregarBloque(20, 0);
@@ -78,13 +78,13 @@ public class SerpienteLogica  {
 	}
 	
 	public void cambiarGrafica(int i) { 
-			cabeza.getMiGrafica().setImagen(i+9);
+			//cabeza.getMiGrafica().setImagen(i+9);
 			cabeza.getMiGrafica().actualizarGrafica();
 			Iterator<Cuerpo> it=cuerpo.iterator();
 			Cuerpo aux=it.next();
 			while(it.hasNext()) {
 				aux=it.next();
-				aux.getMiGrafica().setImagen(i+12);
+			//	aux.getMiGrafica().setImagen(i+12);
 				aux.getMiGrafica().actualizarGrafica();
 			}
 			setColor(i+9);

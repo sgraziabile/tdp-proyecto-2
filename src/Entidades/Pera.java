@@ -11,8 +11,9 @@ public class Pera extends Alimento{
 	public Pera(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;	
+		miRuta = "Imagenes\\pera.png";
 		miGrafica = new EntidadGrafica(v, this);
-		setGrafica(5);
+		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		snake.incrementarPuntuacion(60);

@@ -10,8 +10,9 @@ public class Uva extends Alimento{
 	public Uva(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;	
+		miRuta = "Imagenes\\uvas.png";
 		miGrafica = new EntidadGrafica(v, this);
-		setGrafica(6);
+		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		snake.incrementarPuntuacion(66);

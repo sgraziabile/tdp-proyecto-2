@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,8 +16,6 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
@@ -52,19 +51,15 @@ public class Ventana extends JFrame{
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_UP) {
 					miJuego.setDireccion(1);
-					System.out.println("1");
 		        }
 				if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 					miJuego.setDireccion(2);
-					System.out.println("2");
 		        }
 				if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 					miJuego.setDireccion(3);
-					System.out.println("3");
 		        }
 		        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 		        	miJuego.setDireccion(4);
-		        	System.out.println("4");
 		        } 
 			}
 		});
@@ -132,8 +127,6 @@ public class Ventana extends JFrame{
 		lblTituloSnake.setFont(new Font("Verdana", Font.BOLD, 20));
 		contentPaneMenu.add(lblTituloSnake);
 		
-		
-		
 		miJuego = new Juego(this);
 		
 	}
@@ -154,7 +147,7 @@ public class Ventana extends JFrame{
 		contentPaneJuego.setBackground(new Color(124, 252, 0));
 		contentPaneJuego.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		contentPaneJuego.setLayout(null);
-		
+
 		setContentPane(contentPaneJuego);
 		
 		miJuego.jugar();
@@ -177,7 +170,6 @@ public class Ventana extends JFrame{
 		contentPaneJuego.add(lblnombre);
 		contentPaneJuego.add(tfnombre);
 		contentPaneJuego.add(btnAgregarJ);
-	
 		setLblRanking(contentPaneJuego);
 		botonVolver(contentPaneJuego);
 		
