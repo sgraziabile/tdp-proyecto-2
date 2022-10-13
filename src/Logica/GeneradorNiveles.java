@@ -41,14 +41,14 @@ public class GeneradorNiveles {
         
         
         height = lines.size();
-        Tablero tablero=new Tablero(height);
+        Tablero tablero=new Tablero(30);
 
         for (int j = 0; j < tablero.getTamanio(); j++) {
             line = lines.get(j);
-            for (int i = 0; i < width; i++) {
+            for (int i = 0; i < tablero.getTamanio(); i++) {
                 if (i < line.length()) {
                     char ch = line.charAt(i);
-                    Entidad e=crearEntidad(i*20,j*20,ch,juego.getVentana(),entidades);
+                    Entidad e=crearEntidad(i*20-10,j*20-10,ch,juego.getVentana(),entidades);
                     if(e!=null) {
                     	tablero.getBloque(i, j).ocupar(e);
                     }
@@ -56,7 +56,6 @@ public class GeneradorNiveles {
                 }
                 
             }
-            System.out.println();
         }
         juego.setTablero(tablero);
         return entidades;

@@ -68,7 +68,7 @@ public class Ventana extends JFrame{
 		setIconImage(Toolkit.getDefaultToolkit().getImage("Imagenes\\serpienteLogo.jpg"));
 		setTitle("Snake");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 595, 640);
+		setBounds(100, 100, 580, 630);
 		contentPaneMenu = new JPanel();
 		contentPaneMenu.setBackground(new Color(189, 183, 107));
 		contentPaneMenu.setBorder(new LineBorder(new Color(0, 0, 0), 2));
