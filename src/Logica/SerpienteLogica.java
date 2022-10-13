@@ -2,6 +2,7 @@ package Logica;
 
 import java.util.*;
 
+
 import Entidades.*;
 
 public class SerpienteLogica  {
@@ -86,7 +87,7 @@ public class SerpienteLogica  {
 			Cuerpo aux=it.next();
 			while(it.hasNext()) {
 				aux=it.next();
-				aux.getMiGrafica().setImagenSerpiente(i+3);
+				aux.getMiGrafica().setImagenSerpiente(i+4);
 				aux.getMiGrafica().actualizarGrafica();
 			}
 			setColor(i+1);
