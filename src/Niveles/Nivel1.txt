@@ -1,13 +1,3 @@
-! # = pared
-! * = vacio
-! m = manzana
-! b=banana
-! f=frutilla
-! u=uva
-! p=pera
-! a=azul
-! r=rojo
-! v=verde 
 #############################
 #***************************#
 #***************************#
