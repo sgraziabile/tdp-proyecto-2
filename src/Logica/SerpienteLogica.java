@@ -42,6 +42,7 @@ public class SerpienteLogica  {
 		}
 		else {
 			agregarBloque(x,y);
+			miJuego.getBloque(cuerpo.get(cuerpo.size()-1).getX()/20,cuerpo.get(cuerpo.size()-1).getY()/20).getEntidades().remove(cuerpo.get(cuerpo.size()-1));
 			cuerpo.get(cuerpo.size()-1).getMiGrafica().borrarGrafica();
 			cuerpo.remove(cuerpo.get(cuerpo.size()-1));
 		}
@@ -60,6 +61,7 @@ public class SerpienteLogica  {
 		cabeza.setX(cabeza.getX()+x);
 		cabeza.setY(cabeza.getY()+y);
 		cuerpo.add(1, nuevo);
+		miJuego.getBloque(nuevo.getX()/20, nuevo.getY()/20).getEntidades().add(nuevo);
 		cabeza.getMiGrafica().actualizarGrafica();
 		nuevo.getMiGrafica().actualizarGrafica();
 	}
@@ -84,13 +86,28 @@ public class SerpienteLogica  {
 			Cuerpo aux=it.next();
 			while(it.hasNext()) {
 				aux=it.next();
-				aux.getMiGrafica().setImagenSerpiente(i+4);
+				aux.getMiGrafica().setImagenSerpiente(i+3);
 				aux.getMiGrafica().actualizarGrafica();
 			}
 			setColor(i+1);
 	}
 	public void setColor(int i) {
 		colorSerpiente=i;
+	}
+	public void regenerarSerpiente() {
+		for(Cuerpo aux:cuerpo) {
+			aux.getMiGrafica().borrarGrafica();
+		}
+		miJuego.setDireccion(2);
+		cuerpo = new ArrayList<Cuerpo>();
+		colorSerpiente=1;
+		miReloj.setVelocidad(300);
+		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
+		cabeza.getMiGrafica().setImagenSerpiente(colorSerpiente);
+		cuerpo.add(cabeza);
+		agregarBloque(20, 0);
+		agregarBloque(20, 0);
+		
 	}
 	
 }

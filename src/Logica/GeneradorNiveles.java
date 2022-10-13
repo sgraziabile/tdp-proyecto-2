@@ -48,10 +48,7 @@ public class GeneradorNiveles {
             for (int i = 0; i < tablero.getTamanio(); i++) {
                 if (i < line.length()) {
                     char ch = line.charAt(i);
-                    Entidad e=crearEntidad(i*20+10,j*20+10,ch,juego.getVentana(),entidades);
-                    if(e!=null) {
-                    	tablero.getBloque(i, j).ocupar(e);
-                    }
+                    Entidad e=crearEntidad(i*20+10,j*20+10,ch,juego.getVentana(),entidades,tablero);
                     
                 }
                 
@@ -70,18 +67,18 @@ public class GeneradorNiveles {
 	 * @param entidades Lista de entidades donde va a ser agregada
 	 * @return La entidad creada.
 	 */
-	private static Entidad crearEntidad(int i,int j,char entidadACrear,Ventana ventana,List<Entidad> entidades) {
+	private static Entidad crearEntidad(int i,int j,char entidadACrear,Ventana ventana,List<Entidad> entidades,Tablero tablero) {
 		Entidad nueva=null;
 		switch(entidadACrear){
-			case '#': nueva= new Pared(i,j,ventana);break; 
-			case 'm': nueva=new Manzana(i,j,ventana);entidades.add(nueva);break;
-			case 'b': nueva=new Banana(i,j,ventana);entidades.add(nueva);break;
-			case 'f': nueva=new Frutilla(i,j,ventana);entidades.add(nueva);break;
-			case 'u': nueva=new Uva(i,j,ventana);entidades.add(nueva);break;
-			case 'p': nueva=new Pera(i,j,ventana);entidades.add(nueva);break;
-			case 'a': nueva=new Azul(i,j,ventana);entidades.add(nueva);break;
-			case 'r': nueva=new Roja(i,j,ventana);entidades.add(nueva);break;
-			case 'v': nueva=new Verde(i,j,ventana);entidades.add(nueva);break;
+			case '#': nueva= new Pared(i,j,ventana);tablero.getBloque((i-10)/20, (j-10)/20).ocupar(nueva);break; 
+			case 'm': nueva=new Manzana(i,j,ventana);entidades.add(nueva);tablero.getBloque((i-10)/20, (j-10)/20).getEntidades().add(nueva);nueva.getMiGrafica().getImage().setVisible(false);break;
+			case 'b': nueva=new Banana(i,j,ventana);entidades.add(nueva);tablero.getBloque((i-10)/20, (j-10)/20).getEntidades().add(nueva);nueva.getMiGrafica().getImage().setVisible(false);break;
+			case 'f': nueva=new Frutilla(i,j,ventana);entidades.add(nueva);tablero.getBloque((i-10)/20, (j-10)/20).getEntidades().add(nueva);nueva.getMiGrafica().getImage().setVisible(false);break;
+			case 'u': nueva=new Uva(i,j,ventana);entidades.add(nueva);tablero.getBloque((i-10)/20, (j-10)/20).getEntidades().add(nueva);nueva.getMiGrafica().getImage().setVisible(false);break;
+			case 'p': nueva=new Pera(i,j,ventana);entidades.add(nueva);tablero.getBloque((i-10)/20, (j-10)/20).getEntidades().add(nueva);nueva.getMiGrafica().getImage().setVisible(false);break;
+			case 'a': nueva=new Azul(i,j,ventana);entidades.add(nueva);tablero.getBloque((i-10)/20, (j-10)/20).getEntidades().add(nueva);nueva.getMiGrafica().getImage().setVisible(false);break;
+			case 'r': nueva=new Roja(i,j,ventana);entidades.add(nueva);tablero.getBloque((i-10)/20, (j-10)/20).getEntidades().add(nueva);nueva.getMiGrafica().getImage().setVisible(false);break;
+			case 'v': nueva=new Verde(i,j,ventana);entidades.add(nueva);tablero.getBloque((i-10)/20, (j-10)/20).getEntidades().add(nueva);;nueva.getMiGrafica().getImage().setVisible(false);break;
 			default :nueva=null;
 		}
 		return nueva;

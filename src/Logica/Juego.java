@@ -18,13 +18,14 @@ public class Juego {
 	protected Tablero miTablero;
 	protected Ventana miVentana;
 	protected int direccion;
+	protected int nivel;
 	
 	public Juego(Ventana v) {
 		miRanking = new Ranking();
 		miJugador = new Jugador();
 		miVentana = v;
 		direccion = 2;
-
+		nivel=1;
 	}
 	
 	public int getDireccion() {
@@ -44,25 +45,26 @@ public class Juego {
 	public void jugar() {
 		cambiarNivel(1);
 		miSerpiente = new SerpienteLogica(this);
-
 	}
 	
 	public void cambiarNivel(int i) {
 		String rutaArchivo;
 		switch(i){
 			case 1: rutaArchivo="Niveles/Nivel1.txt"; break;  
-			//Completar despues con los niveles.
+			case 2: rutaArchivo="Niveles/Nivel2.txt";break;
+			case 3: rutaArchivo="Niveles/Nivel3.txt";break;
+			case 4: rutaArchivo="Niveles/Nivel4.txt";break;
+			case 5: rutaArchivo="Niveles/Nivel5.txt";break;
 			default:  rutaArchivo="Niveles/Nivel1.txt";
 		}
 		
-		
 		try {
-			misEntidades=GeneradorNiveles.cargarNivel(rutaArchivo,this);
-			
+			if(i!=1)
+				miSerpiente.regenerarSerpiente();
+			misEntidades=GeneradorNiveles.cargarNivel(rutaArchivo,this);	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		activarEntidad();
 	}
 	
@@ -78,16 +80,20 @@ public class Juego {
 	public void decrementarEntidades(Entidad e) {
 		misEntidades.remove(e);
 		getBloque(primerDigito(e.getX()), primerDigito(e.getY())).desocupar(e);;
-		if(!activarEntidad())
-			cambiarNivel(1);
+		if(!activarEntidad()) {
+			nivel++;
+			cambiarNivel(nivel);
+		}
 	}
 	
 	private boolean activarEntidad(){
 		if(misEntidades.isEmpty())
 			return false;
 		else {
-			 int random = (int) Math.floor(Math.random()*(0-misEntidades.size())+misEntidades.size());
+			 int random = (int) Math.random()%misEntidades.size();
+			 System.out.println(random);
 			 Entidad ent = misEntidades.get(random);
+			 ent.getMiGrafica().getImage().setVisible(true);
 			 miVentana.actualizarGrafica(ent.getMiGrafica());
 			 getBloque(primerDigito(ent.getX()), primerDigito(ent.getY())).ocupar(ent);
 			return true;

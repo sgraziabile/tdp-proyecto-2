@@ -172,6 +172,7 @@ public class Ventana extends JFrame{
 		contentPaneJuego.add(btnAgregarJ);
 		setLblRanking(contentPaneJuego);
 		botonVolver(contentPaneJuego);
+		miJuego.cambiarNivel(1);
 		
 	}
 	

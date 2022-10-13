@@ -88,6 +88,7 @@ public class ColisionVisitor implements Visitor {
 
 	public void visitarCuerpo(Cuerpo c) {
 		boolean colisiono=verColisiones(snake.getCabeza(),c);
+		System.out.println("Chequeo colision");
 		if(colisiono)
 			c.afectarSerpiente(snake,juego);
 		
@@ -99,7 +100,8 @@ public class ColisionVisitor implements Visitor {
 		Entidad aux=null;
 		while(it.hasNext()) {
 			aux=it.next();
-			aux.aceptar(this);
+			if(aux.getMiGrafica().getImage().isVisible())
+				aux.aceptar(this);
 		}
 	}
 	
@@ -129,12 +131,9 @@ public class ColisionVisitor implements Visitor {
 		
 		Rectangle hitboxEntidadA=armarHitboxEntidad(a);
 		Rectangle hitboxEntidadB=armarHitboxEntidad(b);
-		boolean colisiono=false;
-		
+		boolean colisiono=false;		
 		if(hitboxEntidadA.intersects(hitboxEntidadB))
 			colisiono=true;
-		
-		
 		return colisiono;
 	}
 
