@@ -20,9 +20,14 @@ public abstract class Entidad {
 	}
 	
 	public void setGrafica(int i) {
-		//ver imagen serpiente
-		miGrafica.setImagen();
-		miGrafica.actualizarGrafica();
+		if(i == 0) {
+			miGrafica.setImagen();
+			miGrafica.actualizarGrafica();
+		}else {
+			miGrafica.setImagenSerpiente(i);
+			miGrafica.actualizarGrafica();
+		}
+		
 	}
 
 	public int getX() {
