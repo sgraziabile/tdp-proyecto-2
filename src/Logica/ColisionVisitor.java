@@ -18,6 +18,7 @@ public class ColisionVisitor implements Visitor {
 	
 	public void visitarPared(Pared p) {
 		boolean colisiono=verColisiones(snake.getCabeza(),p);
+		System.out.println("Chequeo colision");
 		if(colisiono)
 			p.afectarSerpiente(snake,juego);
 	}
@@ -88,7 +89,7 @@ public class ColisionVisitor implements Visitor {
 
 	public void visitarCuerpo(Cuerpo c) {
 		boolean colisiono=verColisiones(snake.getCabeza(),c);
-		System.out.println("Chequeo colision");
+		
 		if(colisiono)
 			c.afectarSerpiente(snake,juego);
 		

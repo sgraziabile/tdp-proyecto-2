@@ -19,6 +19,7 @@ public class Bloque {
 	}
 	
 	public void ocupar(Entidad e) {
+		misEntidades.add(e);
 		e.actualizarGrafica();
 	}
 	

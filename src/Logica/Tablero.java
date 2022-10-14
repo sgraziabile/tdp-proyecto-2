@@ -1,7 +1,6 @@
 package Logica;
 
-
-
+import Entidades.Entidad;
 
 public class Tablero {
 	protected Bloque[][] grilla;
@@ -20,6 +19,14 @@ public class Tablero {
 	
 	public int getTamanio() {
 		return tamaño;
+	}
+	//Borra las entidades graficas del tablero
+	public void borrarTablero() {
+		for(int i = 0; i < tamaño; i++)
+			for(int j = 0; j < tamaño; j++)
+				for(Entidad e:grilla[i][j].getEntidades()) {
+					e.borrarGrafica();
+				}
 	}
 	
 	

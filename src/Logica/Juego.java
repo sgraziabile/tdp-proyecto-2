@@ -41,9 +41,11 @@ public class Juego {
 	}
 	
 	public void gameOver() {
-		miSerpiente.borrarGrafica();
+		miSerpiente.borrarGraficaCabeza();
+		miTablero.borrarTablero();
 		miVentana.gameOver();
 		miSerpiente.detenerReloj();
+		
 		cambiarNivel(1);
 	}
 	

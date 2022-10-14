@@ -31,7 +31,6 @@ public class SerpienteLogica  {
 		cuerpo.add(cabeza);
 		agregarBloque(20, 0);
 		agregarBloque(20, 0);
-		
 		visitor=new ColisionVisitor(this,miJuego);
 	}
 	
@@ -131,11 +130,8 @@ public class SerpienteLogica  {
 	 Cuando el jugador perdió, borraremos toda la grafica de la serpiente con el método borrar gráfica.
 	 */
 	
-	public void borrarGrafica() {
-		for(Cuerpo aux:cuerpo) {
-			aux.borrarGrafica();
-		}
-		cuerpo = new ArrayList<Cuerpo>();
+	public void borrarGraficaCabeza() {
+		cabeza.borrarGrafica();
 	}
 	
 	public void detenerReloj() {
