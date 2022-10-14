@@ -10,14 +10,14 @@ public class Verde extends PowerUp{
 	public Verde(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;	
-		miRuta = "Imagenes\\verde.png";
+		miRuta = "Imagenes\\greenPotion.png";
 		miGrafica = new EntidadGrafica(v, this);
 		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		juego.incrementarPuntuacion(80);
 		snake.crecer(3);
-		snake.cambiarGrafica(3);
+		snake.cambiarGrafica(2);
 		borrarGrafica();
 		juego.decrementarEntidades(this);
 

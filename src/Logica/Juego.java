@@ -44,6 +44,7 @@ public class Juego {
 		miSerpiente.borrarGrafica();
 		miVentana.gameOver();
 		miSerpiente.detenerReloj();
+		cambiarNivel(1);
 	}
 	
 	public void jugar() {

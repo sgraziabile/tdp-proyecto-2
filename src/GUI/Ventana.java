@@ -84,7 +84,6 @@ public class Ventana extends JFrame{
 		contentPaneMenu.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		contentPaneMenu.setLayout(null);
 		setContentPane(contentPaneMenu);
-			
 		
 		contentPaneRanking = new JPanel();
 		contentPaneRanking.setBackground(new Color(189, 183, 107));
@@ -108,6 +107,11 @@ public class Ventana extends JFrame{
 		btnJugar.setBounds(210, 230, 190, 60);
 		contentPaneMenu.add(btnJugar);
 		
+		
+		JLabel lblTitulo2 = new JLabel("The Game");
+		lblTitulo2.setFont(new Font("Verdana", Font.BOLD, 25));
+		lblTitulo2.setBounds(208, 95, 165, 82);
+		contentPaneMenu.add(lblTitulo2);
 		JButton btnRanking = new JButton("Ranking");
 		
 		btnRanking.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -130,10 +134,7 @@ public class Ventana extends JFrame{
 		btnSalir.setBounds(210, 430, 190, 60);
 		contentPaneMenu.add(btnSalir);
 		
-		JLabel lblTitulo2 = new JLabel("The Game");
-		lblTitulo2.setFont(new Font("Verdana", Font.BOLD, 25));
-		lblTitulo2.setBounds(208, 95, 165, 82);
-		contentPaneMenu.add(lblTitulo2);
+		
 		
 		JLabel lblTituloSnake = new JLabel("Snake:");
 		lblTituloSnake.setBounds(208, 45, 165, 117);
@@ -170,6 +171,7 @@ public class Ventana extends JFrame{
 		
 		miJuego = new Juego(this);
 		
+		
 	}
 	
 	public void mostrarRanking() {
@@ -178,7 +180,7 @@ public class Ventana extends JFrame{
 		setContentPane(contentPaneRanking);
 		
 		setLblRanking(contentPaneRanking,new Color(189, 183, 107));
-		botonVolver(contentPaneRanking);
+		botonVolver(contentPaneRanking, contentPaneRanking);
 		
 	}
 	
@@ -196,10 +198,15 @@ public class Ventana extends JFrame{
 	
 	
 	public void gameOver() {
-		JLabel lblgameOver = new JLabel("GAME OVER");
+		JLabel lblgameOver = new JLabel("¡GAME OVER!");
+		lblgameOver.setFont(new Font("Tahoma", Font.BOLD, 27));
+		lblgameOver.setBounds(210, 170, 190, 39);
+		contentPaneJuego.add(lblgameOver);
+		
 		JButton btnAgregarJ = new JButton("Agregar jugador");
-		btnAgregarJ.setBounds(10, 33, 144, 29);
-		btnAgregarJ.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnAgregarJ.setBounds(210, 330, 190, 60);
+		btnAgregarJ.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contentPaneJuego.add(btnAgregarJ);
 		btnAgregarJ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
@@ -207,18 +214,16 @@ public class Ventana extends JFrame{
 				miJuego.getJugador().setPuntuacion(65);
 				miJuego.getMiRanking().agregarJugador(miJuego.getJugador());
 				if(miJuego.getJugador().getNombre() != "") {
-					setLblRanking(contentPaneJuego, new Color(124, 252, 0));
-					botonVolver(contentPaneJuego);
+					lblgameOver.setVisible(false);
+					JPanel rank =setLblRanking(contentPaneJuego, new Color(124, 252, 0));
+					botonVolver(contentPaneJuego, rank);
 					contentPaneJuego.repaint();
 					btnAgregarJ.setVisible(false);
 					}
 			}
 		});
-		
 		contentPaneJuego.add(lblgameOver);
 		contentPaneJuego.add(btnAgregarJ);
-		
-		miJuego.cambiarNivel(1);
 		
 	}
 	
@@ -234,7 +239,7 @@ public class Ventana extends JFrame{
 		contentPaneJuego.repaint();
 	}
 	
-	private void botonVolver(JPanel panel) {
+	private void botonVolver(JPanel panel, JPanel ranking) {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.setBounds(210, 430, 190, 60);
 		btnVolver.setVisible(true);
@@ -244,12 +249,13 @@ public class Ventana extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				contentPaneMenu.setVisible(true);
 				panel.setVisible(false);
+				ranking.setVisible(false);
 				setContentPane(contentPaneMenu);
 			}
 		});
 	}
 	
-	private void setLblRanking(JPanel panel, Color c) {
+	private JPanel setLblRanking(JPanel panel, Color c) {
 		JLabel top5 = new JLabel("TOP 5");
 		top5.setFont(new Font("Verdana", Font.BOLD, 25));
 		top5.setBounds(60, 35, 90, 82);
@@ -280,6 +286,7 @@ public class Ventana extends JFrame{
 		panelRanking.add(top5);
 
 		panel.add(panelRanking);
+		return panelRanking;
 	}
 	
 	private boolean cambioDireccion(int ant, int nueva) {

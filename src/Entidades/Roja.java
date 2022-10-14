@@ -11,7 +11,7 @@ public class Roja extends PowerUp{
 	public Roja(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;
-		miRuta ="Imagenes\\roja.png";
+		miRuta ="Imagenes\\redPotion.png";
 		miGrafica = new EntidadGrafica(v, this);
 		setGrafica(0);
 	}

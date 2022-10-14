@@ -10,7 +10,7 @@ public class Azul extends PowerUp{
 	public Azul(int x, int y, Ventana v) {
 		this.x = x;
 		this.y = y;	
-		miRuta = "Imagenes\\azul.png";
+		miRuta = "Imagenes\\bluePotion.png";
 		miGrafica = new EntidadGrafica(v, this);
 		setGrafica(0);
 	}
