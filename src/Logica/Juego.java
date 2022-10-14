@@ -46,15 +46,21 @@ public class Juego {
 		miSerpiente.borrarGraficaCabeza();
 		miTablero.borrarTablero();
 		miSerpiente.detenerReloj();
+		cronometro.stop();
+		cambiarNivel(1);
 	}
 	
 	public void jugar() {
 		direccion = 2;
-		cronometro=new Reloj(this);
+		cronometro = new Reloj(this);
 		cambiarNivel(1);
-		cronometro.setEstado(true);
 		cronometro.start();
 		miSerpiente = new SerpienteLogica(this);
+	}
+	
+	public void actualizarTiempo(int x) {
+		//llamar a ventana
+		System.out.println(x);
 	}
 	
 	public void cambiarNivel(int i) {
@@ -96,7 +102,7 @@ public class Juego {
 	
 	public void decrementarEntidades(Entidad e) {
 		misEntidades.remove(e);
-		getBloque((e.getX()-1)/20,(e.getY()-10)/20).desocupar(e);
+		getBloque((e.getX()-10)/20,(e.getY()-10)/20).desocupar(e);
 		if(!activarEntidad()) {
 			nivel++;
 			cambiarNivel(nivel);
@@ -140,8 +146,4 @@ public class Juego {
 	public void setTablero(Tablero t) {
 		miTablero=t;
 	}
-	public void actualizarTiempo(int x) {
-		miVentana.getCrono().setText(Integer.toString(x));
-	}
-	
 }

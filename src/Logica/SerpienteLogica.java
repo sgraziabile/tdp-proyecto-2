@@ -23,7 +23,7 @@ public class SerpienteLogica  {
 		miJuego = j;
 		cuerpo = new ArrayList<Cuerpo>();
 		colorSerpiente=1;
-		miReloj = new RelojVelocidad(this, 175);
+		miReloj = new RelojVelocidad(this);
 		miReloj.start();
 		
 		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
@@ -82,8 +82,6 @@ public class SerpienteLogica  {
 		nuevo.actualizarGrafica();
 	}
 	
-	
-	
 	public Cuerpo getCabeza() {
 		return cabeza;
 	}
@@ -131,6 +129,7 @@ public class SerpienteLogica  {
 	}
 	
 	public void detenerReloj() {
+		miReloj.setEstado(false);
 		miReloj.stop();
 	}
 	
