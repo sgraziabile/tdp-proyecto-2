@@ -1,14 +1,15 @@
 package Logica;
 
 public class Reloj extends Thread{
+
 	protected int cronometro;
 	protected Juego miJuego;
-	protected boolean activo;
+	boolean activo;
 
 	public Reloj(Juego juego) {
 		miJuego = juego;
 		cronometro = 0;
-		this.activo=false;
+		activo=true;
 	}
 	
 	public void run() {
@@ -21,6 +22,7 @@ public class Reloj extends Thread{
 			catch(InterruptedException e) {}
 		}
 	}
+
 	public void setEstado(boolean activo) {
 		this.activo=activo;
 	}

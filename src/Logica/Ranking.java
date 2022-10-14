@@ -1,4 +1,6 @@
 package Logica;
+import Datos.Escribir;
+import Datos.Leer;
 /*
  * La clase Ranking inicializa un arreglo de 5 jugadores y le asigna
  * los jugadores serializados en "ranking.txt".
@@ -64,7 +66,7 @@ public class Ranking {
 	public String getJugador(int i) {
 		String s = "";
 		if(arregloJugadores[i-1] != null) {
-			return s+i+"- "+arregloJugadores[i-1].getNombre() +" "+arregloJugadores[i-1].getPuntuacion();
+			return s+i+"- "+arregloJugadores[i-1].getNombre() +"   "+arregloJugadores[i-1].getPuntuacion();
 		}else {
 			return s+i+" - Jugador vacio ----";
 		}	
