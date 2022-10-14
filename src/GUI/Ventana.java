@@ -5,7 +5,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Logica.*;
@@ -48,21 +50,26 @@ public class Ventana extends JFrame{
 	/**
 	 * Create the frame.
 	 */
+	
 	public Ventana() {
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_UP) {
-					miJuego.setDireccion(1);
+					if(cambioDireccion(miJuego.getDireccion(), 1))
+						miJuego.setDireccion(1);
 		        }
 				if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-					miJuego.setDireccion(2);
+					if(cambioDireccion(miJuego.getDireccion(), 2))
+						miJuego.setDireccion(2);
 		        }
 				if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-					miJuego.setDireccion(3);
+					if(cambioDireccion(miJuego.getDireccion(), 3))
+						miJuego.setDireccion(3);
 		        }
 		        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-		        	miJuego.setDireccion(4);
+					if(cambioDireccion(miJuego.getDireccion(), 4))
+		        		miJuego.setDireccion(4);
 		        } 
 			}
 		});
@@ -85,8 +92,8 @@ public class Ventana extends JFrame{
 		contentPaneRanking.setLayout(null);
 	
 		panelRanking = new JPanel();
-		panelRanking.setBounds(112, 90, 300, 300);
-		panelRanking.setBackground(new Color(189, 183, 107));
+		panelRanking.setBounds(190, 90, 230, 300);
+		panelRanking.setBackground(new Color(200, 183, 107));
 		panelRanking.setLayout(null);
 		contentPaneRanking.add(panelRanking);
 		
@@ -143,7 +150,7 @@ public class Ventana extends JFrame{
 		
 		tfPuntuacion = new JTextField();
 		tfPuntuacion.setFont(new Font("Tahoma", Font.BOLD, 16));
-		tfPuntuacion.setText("x1");
+		tfPuntuacion.setText("");
 		tfPuntuacion.setBackground(Color.GRAY);
 		tfPuntuacion.setForeground(Color.BLACK);
 		panelPuntTiempo.add(tfPuntuacion);
@@ -170,7 +177,7 @@ public class Ventana extends JFrame{
 		contentPaneRanking.setVisible(true);
 		setContentPane(contentPaneRanking);
 		
-		setLblRanking(contentPaneRanking);
+		setLblRanking(contentPaneRanking,new Color(189, 183, 107));
 		botonVolver(contentPaneRanking);
 		
 	}
@@ -189,29 +196,35 @@ public class Ventana extends JFrame{
 	
 	
 	public void gameOver() {
-		//mostrar gameOver
-		
-		JLabel lblnombre = new JLabel("Ingrese su nombre");
-		lblnombre.setFont(new Font("Verdana", Font.BOLD, 20));
-		JTextField tfnombre = new JTextField();
+		JLabel lblgameOver = new JLabel("GAME OVER");
 		JButton btnAgregarJ = new JButton("Agregar jugador");
+		btnAgregarJ.setBounds(10, 33, 144, 29);
+		btnAgregarJ.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnAgregarJ.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				miJuego.getJugador().setNombre(tfnombre.getText());
+				String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
+				miJuego.getJugador().setNombre(nombre);
+				miJuego.getJugador().setPuntuacion(65);
 				miJuego.getMiRanking().agregarJugador(miJuego.getJugador());
+				if(miJuego.getJugador().getNombre() != "") {
+					setLblRanking(contentPaneJuego, new Color(124, 252, 0));
+					botonVolver(contentPaneJuego);
+					contentPaneJuego.repaint();
+					btnAgregarJ.setVisible(false);
+					}
 			}
 		});
-		contentPaneJuego.add(lblnombre);
-		contentPaneJuego.add(tfnombre);
+		
+		contentPaneJuego.add(lblgameOver);
 		contentPaneJuego.add(btnAgregarJ);
-		setLblRanking(contentPaneJuego);
-		botonVolver(contentPaneJuego);
+		
 		miJuego.cambiarNivel(1);
 		
 	}
 	
 	public void actualizarGrafica(EntidadGrafica eg) {
 		eg.grafica.setBounds(eg.miEntidad.getX(), eg.miEntidad.getY(), eg.miEntidad.getAlto(), eg.miEntidad.getAncho());
+		tfPuntuacion.setText(""+miJuego.getJugador().getPuntuacion());
 		contentPaneJuego.add(eg.grafica);
 		contentPaneJuego.repaint();
 	}
@@ -236,11 +249,11 @@ public class Ventana extends JFrame{
 		});
 	}
 	
-	private void setLblRanking(JPanel panel) {
+	private void setLblRanking(JPanel panel, Color c) {
 		JLabel top5 = new JLabel("TOP 5");
 		top5.setFont(new Font("Verdana", Font.BOLD, 25));
-		top5.setBounds(140, 35, 165, 82);
-		
+		top5.setBounds(60, 35, 90, 82);
+		panelRanking.setBackground(c);
 		JLabel jug1 = new JLabel(miJuego.getMiRanking().getJugador(1));
 		JLabel jug2 = new JLabel(miJuego.getMiRanking().getJugador(2));
 		JLabel jug3 = new JLabel(miJuego.getMiRanking().getJugador(3));
@@ -253,11 +266,11 @@ public class Ventana extends JFrame{
 		jug4.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		jug5.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		
-		jug1.setBounds(110, 100, 190, 30);
-		jug2.setBounds(110, 135, 190, 30);
-		jug3.setBounds(110, 170, 190, 30);
-		jug4.setBounds(110, 205, 190, 30);
-		jug5.setBounds(110, 240, 190, 30);
+		jug1.setBounds(25, 100, 190, 30);
+		jug2.setBounds(25, 135, 190, 30);
+		jug3.setBounds(25, 170, 190, 30);
+		jug4.setBounds(25, 205, 190, 30);
+		jug5.setBounds(25, 240, 190, 30);
 
 		panelRanking.add(jug1);
 		panelRanking.add(jug2);
@@ -265,6 +278,18 @@ public class Ventana extends JFrame{
 		panelRanking.add(jug4);
 		panelRanking.add(jug5);
 		panelRanking.add(top5);
+
 		panel.add(panelRanking);
+	}
+	
+	private boolean cambioDireccion(int ant, int nueva) {
+		switch (ant) {
+			case 1: if(nueva == 3) return false; break; 
+			case 2:	if(nueva == 4) return false; break;
+			case 3: if(nueva == 1) return false; break;
+			case 4: if(nueva == 2) return false; break;
+			default: return true;
+		}
+		return true;
 	}
 }
