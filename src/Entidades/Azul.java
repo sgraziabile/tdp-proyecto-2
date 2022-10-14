@@ -15,10 +15,10 @@ public class Azul extends PowerUp{
 		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
-			snake.incrementarPuntuacion(70);
+			juego.incrementarPuntuacion(70);
 			snake.crecer(3);
-			snake.cambiarGrafica(1);
-			miGrafica.borrarGrafica();
+			snake.cambiarGrafica(0);
+			borrarGrafica();
 			juego.decrementarEntidades(this);
 			
 	}

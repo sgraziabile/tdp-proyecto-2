@@ -16,10 +16,10 @@ public class Roja extends PowerUp{
 		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
-		snake.incrementarPuntuacion(50);
+		juego.incrementarPuntuacion(50);
 		snake.crecer(3);
 		snake.cambiarGrafica(1);
-		miGrafica.borrarGrafica();
+		borrarGrafica();
 		juego.decrementarEntidades(this);
 
 	}

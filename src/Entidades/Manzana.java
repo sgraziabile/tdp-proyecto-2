@@ -15,9 +15,9 @@ public class Manzana extends Alimento{
 		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
-		snake.incrementarPuntuacion(70);
+		juego.incrementarPuntuacion(70);
 		snake.crecer(5);
-		miGrafica.borrarGrafica();
+		borrarGrafica();
 		juego.decrementarEntidades(this);
 
 	}
