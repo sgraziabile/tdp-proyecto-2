@@ -14,6 +14,11 @@ public class SerpienteLogica  {
 	private ColisionVisitor visitor;
 	private int colorSerpiente;
 	
+	/*
+	 El constructor crea una serpiente con una cabeza y dos bloques, de color azul.
+	 La entidad cuerpo recibe un int indicando el color de la serpiente, el cual se actualiza en el método setGrafica() de Entidad.
+	 */
+	
 	public SerpienteLogica(Juego j) {
 		miJuego = j;
 		cuerpo = new ArrayList<Cuerpo>();
@@ -22,7 +27,7 @@ public class SerpienteLogica  {
 		miReloj.start();
 		
 		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
-		cabeza.getMiGrafica().setImagenSerpiente(colorSerpiente);
+		cabeza.setGrafica(colorSerpiente);
 		cuerpo.add(cabeza);
 		agregarBloque(20, 0);
 		agregarBloque(20, 0);
@@ -33,6 +38,12 @@ public class SerpienteLogica  {
 	public List<Cuerpo> getListaCuerpos(){
 		return cuerpo;
 	}
+	
+	/*
+	 El método mover recibe los parámetros x, y que se incrementaran a la cabeza de la serpiente.
+	 Si el parámetro crecimiento es positivo, entonces no se remueve el último bloque de la lista de cuerpos ni de la lista de entidades del bloque correspondiente.
+	 Nota: las entidades las hicimos de 20x20, por lo cual al obtener un bloque usamos el x,y de la entidad dividido 20.
+	 */
 	
 	public synchronized boolean mover(int x, int y) {
 		boolean pudo = false;
@@ -57,6 +68,11 @@ public class SerpienteLogica  {
 		crecimiento = crecimiento + p;
 	}
 	
+	/*
+	 El método crea un nuevo cuerpo del color correspondiente, el cual se añadirá en la lista de cuerpos después de la cabeza y también en la lista de entidades del bloque correspondiente para luego controlar colisiones.
+	 Además, se incrementan los parámetros x,y de la serpiente y se actualizan las graficas de la cabeza y el cuerpo añadido.
+	 */
+	
 	private void agregarBloque(int x, int y) {
 		Cuerpo nuevo = new Cuerpo(cabeza.getX(), cabeza.getY(), miJuego.getVentana(),colorSerpiente+3);
 		cabeza.setX(cabeza.getX()+x);
@@ -76,6 +92,10 @@ public class SerpienteLogica  {
 		return cabeza;
 	}
 	
+	/*
+	 Se actualiza la gráfica de toda la serpiente, en el caso de que haya chocado con un power up
+	 */
+	
 	public void cambiarGrafica(int i) { 
 			cabeza.setGrafica(i+1);
 			Iterator<Cuerpo> it=cuerpo.iterator();
@@ -86,6 +106,10 @@ public class SerpienteLogica  {
 			}
 			colorSerpiente = i+1;
 	}
+	
+	/*
+	 Se regenera la serpiente con únicamente la cabeza y dos bloques del color correspondiente para cuando cambia de nivel.
+	 */
 	
 	public void regenerarSerpiente() {
 		for(Cuerpo aux:cuerpo) {
@@ -102,6 +126,10 @@ public class SerpienteLogica  {
 		agregarBloque(20, 0);
 		
 	}
+	
+	/*
+	 Cuando el jugador perdió, borraremos toda la grafica de la serpiente con el método borrar gráfica.
+	 */
 	
 	public void borrarGrafica() {
 		for(Cuerpo aux:cuerpo) {

@@ -12,7 +12,7 @@ public class Tablero {
 		grilla = new Bloque[tamaño][tamaño];
 		for(int i = 0; i < tamaño; i++)
 			for(int j = 0; j < tamaño; j++)
-				grilla[i][j] = new Bloque(i, j);
+				grilla[i][j] = new Bloque();
 	}
 	public Bloque getBloque(int i, int j) {
 		return grilla[i][j];

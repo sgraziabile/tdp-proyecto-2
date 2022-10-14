@@ -67,7 +67,7 @@ public class Juego {
 		try {
 			if(i!=1)
 				miSerpiente.regenerarSerpiente();
-			misEntidades=GeneradorNiveles.cargarNivel(rutaArchivo,this);	
+			misEntidades=GeneradorNiveles.cargarNivel(rutaArchivo,this);	//actualiza la lista de entidades según el nivel correspondiente
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -83,14 +83,23 @@ public class Juego {
 		}
 	}
 	
+	/*
+	 Remueve la entidad e de la lista de entidades y desocupa la entidad de la lista de entidades del bloque correspondiente.
+	 Si ya no hay mas entidades para activar (el método activarEntidad() devuelve false, cambiar de nivel)
+	 */
+	
 	public void decrementarEntidades(Entidad e) {
 		misEntidades.remove(e);
-		getBloque(primerDigito(e.getX()), primerDigito(e.getY())).desocupar(e);;
+		getBloque(e.getX()/20, primerDigito(e.getY())).desocupar(e);
 		if(!activarEntidad()) {
 			nivel++;
 			cambiarNivel(nivel);
 		}
 	}
+	
+	/*
+	 Si hay entidades en la lista, activa una random de ellas, haciendo visible su label y ocupando el bloque con ella
+	 */
 	
 	private boolean activarEntidad(){
 		if(misEntidades.isEmpty())
@@ -101,7 +110,8 @@ public class Juego {
 			 Entidad ent = misEntidades.get(random);
 			 ent.getMiGrafica().getImage().setVisible(true);
 			 miVentana.actualizarGrafica(ent.getMiGrafica());
-			 getBloque(primerDigito(ent.getX()), primerDigito(ent.getY())).ocupar(ent);
+			 getBloque(ent.getX()/20, ent.getY()/20).ocupar(ent);
+			
 			return true;
 		}
 	}

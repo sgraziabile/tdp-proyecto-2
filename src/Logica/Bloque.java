@@ -10,7 +10,7 @@ import Entidades.Entidad;
 public class Bloque {
 	protected List<Entidad> misEntidades;
 	
-	public Bloque(int i, int j) {
+	public Bloque() { 
 		misEntidades = new ArrayList<Entidad>();
 	}
 	
@@ -19,7 +19,6 @@ public class Bloque {
 	}
 	
 	public void ocupar(Entidad e) {
-		misEntidades.add(e);
 		e.actualizarGrafica();
 	}
 	

@@ -19,6 +19,7 @@ public abstract class Entidad {
 		return miGrafica;
 	}
 	
+	
 	public void setGrafica(int i) {
 		if(i == 0) {
 			miGrafica.setImagen();
@@ -27,7 +28,6 @@ public abstract class Entidad {
 			miGrafica.setImagenSerpiente(i);
 			actualizarGrafica();
 		}
-		
 	}
 	
 	public void borrarGrafica() {
