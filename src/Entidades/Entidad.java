@@ -22,14 +22,22 @@ public abstract class Entidad {
 	public void setGrafica(int i) {
 		if(i == 0) {
 			miGrafica.setImagen();
-			miGrafica.actualizarGrafica();
+			actualizarGrafica();
 		}else {
 			miGrafica.setImagenSerpiente(i);
-			miGrafica.actualizarGrafica();
+			actualizarGrafica();
 		}
 		
 	}
-
+	
+	public void borrarGrafica() {
+		miGrafica.borrarGrafica();
+	}
+	
+	public void actualizarGrafica() {
+		miGrafica.actualizarGrafica();
+	}
+	
 	public int getX() {
 		return x;
 	}

@@ -35,14 +35,19 @@ public class Juego {
 	public void setDireccion(int d) {
 		direccion = d;
 	}
-
 	
-	public SerpienteLogica getSerpiente() {
-		return miSerpiente;
+	public void incrementarPuntuacion(int x) {
+		miJugador.setPuntuacion(miJugador.getPuntuacion()+x);
 	}
 	
+	public void gameOver() {
+		miSerpiente.borrarGrafica();
+		miVentana.gameOver();
+		miSerpiente.detenerReloj();
+	}
 	
 	public void jugar() {
+		direccion = 2;
 		cambiarNivel(1);
 		miSerpiente = new SerpienteLogica(this);
 	}

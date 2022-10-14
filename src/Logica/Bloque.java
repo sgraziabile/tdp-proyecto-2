@@ -20,11 +20,11 @@ public class Bloque {
 	
 	public void ocupar(Entidad e) {
 		misEntidades.add(e);
-		e.getMiGrafica().actualizarGrafica();
+		e.actualizarGrafica();
 	}
 	
 	public void desocupar(Entidad e) {
 		misEntidades.remove(e);
-		e.getMiGrafica().borrarGrafica();	
+		e.borrarGrafica();	
 	}
 }

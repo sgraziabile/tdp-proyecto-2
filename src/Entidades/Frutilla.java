@@ -16,9 +16,9 @@ public class Frutilla extends Alimento{
 		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
-		snake.incrementarPuntuacion(25);
+		juego.incrementarPuntuacion(25);
 		snake.crecer(4);
-		miGrafica.borrarGrafica();
+		borrarGrafica();
 		juego.decrementarEntidades(this);
 
 	}

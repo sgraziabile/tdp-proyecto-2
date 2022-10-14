@@ -16,9 +16,9 @@ public class Pera extends Alimento{
 		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
-		snake.incrementarPuntuacion(60);
+		juego.incrementarPuntuacion(60);
 		snake.crecer(2);
-		miGrafica.borrarGrafica();
+		borrarGrafica();
 		juego.decrementarEntidades(this);
 
 	}

@@ -15,7 +15,7 @@ public class Banana extends Alimento{
 		setGrafica(0);
 	}
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
-		snake.incrementarPuntuacion(50);
+		juego.incrementarPuntuacion(50);
 		snake.crecer(3);
 		miGrafica.borrarGrafica();
 		juego.decrementarEntidades(this);

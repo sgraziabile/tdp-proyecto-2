@@ -44,7 +44,7 @@ public class SerpienteLogica  {
 		else {
 			agregarBloque(x,y);
 			miJuego.getBloque(cuerpo.get(cuerpo.size()-1).getX()/20,cuerpo.get(cuerpo.size()-1).getY()/20).getEntidades().remove(cuerpo.get(cuerpo.size()-1));
-			cuerpo.get(cuerpo.size()-1).getMiGrafica().borrarGrafica();
+			cuerpo.get(cuerpo.size()-1).borrarGrafica();
 			cuerpo.remove(cuerpo.get(cuerpo.size()-1));
 		}
 
@@ -63,8 +63,8 @@ public class SerpienteLogica  {
 		cabeza.setY(cabeza.getY()+y);
 		cuerpo.add(1, nuevo);
 		miJuego.getBloque(nuevo.getX()/20, nuevo.getY()/20).getEntidades().add(nuevo);
-		cabeza.getMiGrafica().actualizarGrafica();
-		nuevo.getMiGrafica().actualizarGrafica();
+		cabeza.actualizarGrafica();
+		nuevo.actualizarGrafica();
 	}
 	
 	public void cambiarVelocidad(int v) {
@@ -76,39 +76,42 @@ public class SerpienteLogica  {
 		return cabeza;
 	}
 	
-	public void incrementarPuntuacion(int x) {
-		miJuego.getJugador().setPuntuacion(miJuego.getJugador().getPuntuacion()+x);
-	}
-	
 	public void cambiarGrafica(int i) { 
-			cabeza.getMiGrafica().setImagenSerpiente(i+1);
-			cabeza.getMiGrafica().actualizarGrafica();
+			cabeza.setGrafica(i+1);
 			Iterator<Cuerpo> it=cuerpo.iterator();
 			Cuerpo aux=it.next();
 			while(it.hasNext()) {
 				aux=it.next();
-				aux.getMiGrafica().setImagenSerpiente(i+4);
-				aux.getMiGrafica().actualizarGrafica();
+				aux.setGrafica(i+4);
 			}
-			setColor(i+1);
+			colorSerpiente = i+1;
 	}
-	public void setColor(int i) {
-		colorSerpiente=i;
-	}
+	
 	public void regenerarSerpiente() {
 		for(Cuerpo aux:cuerpo) {
-			aux.getMiGrafica().borrarGrafica();
+			aux.borrarGrafica();
 		}
-		miJuego.setDireccion(2);
 		cuerpo = new ArrayList<Cuerpo>();
 		colorSerpiente=1;
+		miJuego.setDireccion(2);
 		miReloj.setVelocidad(300);
 		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
-		cabeza.getMiGrafica().setImagenSerpiente(colorSerpiente);
+		cabeza.setGrafica(colorSerpiente);
 		cuerpo.add(cabeza);
 		agregarBloque(20, 0);
 		agregarBloque(20, 0);
 		
+	}
+	
+	public void borrarGrafica() {
+		for(Cuerpo aux:cuerpo) {
+			aux.borrarGrafica();
+		}
+		cuerpo = new ArrayList<Cuerpo>();
+	}
+	
+	public void detenerReloj() {
+		miReloj.stop();
 	}
 	
 }
