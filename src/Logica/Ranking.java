@@ -1,24 +1,36 @@
 package Logica;
+/*
+ * La clase Ranking inicializa un arreglo de 5 jugadores y le asigna
+ * los jugadores serializados en "ranking.txt".
+ * 
+ */
 
 public class Ranking {
 	
 	protected Jugador[] arregloJugadores;
-	
+	//Inicializo un arreglo de 5 jugadores.
 	public Ranking() {
 		arregloJugadores = new Jugador[5];
+		setRanking();
 	}
 	
 	public Jugador[] getJugadores() {
 		return arregloJugadores;
 	}
-	
-	public void setRanking() {
+	//Le asigno el ranking serializado al arreglo de jugadores.
+	private void setRanking() {
 		try {
 			arregloJugadores = Leer.leer();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * Agrega un jugador al ranking en base a su puntaje.
+	 * Luego lo ordena y guarda los elementos del arreglo en "ranking.txt".
+	 * Si el ranking no está lleno, se inserta automáticamente al jugador.
+	 * Si está lleno, el jugador se inserta si su puntaje es menor al mínimo del ranking. 
+	 */
 	public void agregarJugador(Jugador newPlayer) {
 		int cont = this.cantJugadores();
 		int puntos = newPlayer.getPuntuacion();
@@ -48,7 +60,7 @@ public class Ranking {
 			}
 		}
 	}
-	
+	//Devuelve un string con los datos del jugador del ranking en la posición i. 
 	public String getJugador(int i) {
 		String s = "";
 		if(arregloJugadores[i-1] != null) {
@@ -57,6 +69,7 @@ public class Ranking {
 			return s+i+" - Jugador vacio ----";
 		}	
 	}
+	//Ordena el arreglo de jugadores en base a su puntaje. 
 	private void ordenar(int cont, int puntos, Jugador newPlayer) {
 		boolean establecido = false;
 		while(cont > 0 && !establecido) {
@@ -68,11 +81,13 @@ public class Ranking {
 				establecido = true;
 		}
 	}
+	//Intercambia las posiciones de dos elementos del arreglo. 
 	private void swap(int i, int j, Jugador newPlayer) {
 		Jugador aux = arregloJugadores[j];
 		arregloJugadores[j] = newPlayer;
 		arregloJugadores[i] = aux;
 	}
+	//Devuelve la cantidad de jugadores que hay en el ranking. 
 	private int cantJugadores() {
 		int cont = 0; boolean fin = false;
 		for(int i = 0; i < arregloJugadores.length && !fin; i++) {

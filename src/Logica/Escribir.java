@@ -9,7 +9,10 @@ import java.io.ObjectOutputStream;
 public class Escribir {
 	
 	private static final String file = "ranking.txt";
-		
+	/*
+	 * Recibe un arreglo de Jugador y por cada elemento del mismo, 
+	 * serializa la instancia actual del mismo en el archivo "ranking.txt". 
+	 */
 	public static void guardar(Jugador[] ranking) throws Exception {
 		try {
 		FileOutputStream file = new FileOutputStream(Escribir.file);
