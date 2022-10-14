@@ -211,7 +211,6 @@ public class Ventana extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
 				miJuego.getJugador().setNombre(nombre);
-				miJuego.getJugador().setPuntuacion(65);
 				miJuego.getMiRanking().agregarJugador(miJuego.getJugador());
 				if(miJuego.getJugador().getNombre() != "") {
 					lblgameOver.setVisible(false);
