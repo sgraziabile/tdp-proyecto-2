@@ -45,14 +45,21 @@ public class Juego {
 		miTablero.borrarTablero();
 		miVentana.gameOver();
 		miSerpiente.detenerReloj();
-		
+		cronometro.stop();
 		cambiarNivel(1);
 	}
 	
 	public void jugar() {
 		direccion = 2;
+		cronometro = new Reloj(this);
+		cronometro.start();
 		cambiarNivel(1);
 		miSerpiente = new SerpienteLogica(this);
+	}
+	
+	public void actualizarTiempo(int x) {
+		//llamar a ventana
+		System.out.println(x);
 	}
 	
 	public void cambiarNivel(int i) {
@@ -92,7 +99,7 @@ public class Juego {
 	
 	public void decrementarEntidades(Entidad e) {
 		misEntidades.remove(e);
-		getBloque(e.getX()/20, primerDigito(e.getY())).desocupar(e);
+		getBloque(e.getX()/20, e.getY()/20).desocupar(e);
 		if(!activarEntidad()) {
 			nivel++;
 			cambiarNivel(nivel);
@@ -136,11 +143,12 @@ public class Juego {
 	public void setTablero(Tablero t) {
 		miTablero=t;
 	}
-	
+	/*
 	private int primerDigito(int num) {
 		Integer numero = Integer.parseInt(""+num);
 		int desplazamiento = Double.valueOf(Math.pow(10, numero.SIZE-1)).intValue();
 		return num/desplazamiento;
 	}
+	*/
 
 }
