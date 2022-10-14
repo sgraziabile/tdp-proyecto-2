@@ -2,14 +2,16 @@ package Logica;
 
 public class RelojVelocidad extends Thread {
 	protected SerpienteLogica miSerpiente;
+	protected boolean activo;
 	
 
 	public RelojVelocidad(SerpienteLogica serpiente) {
 		miSerpiente = serpiente;
+		activo = true;
 	}
 	
 	public void run() {
-		while(true) { //borrar activo y cambiar el hilo con start y stop desde afuera
+		while(activo) { //borrar activo y cambiar el hilo con start y stop desde afuera
 			try {
 				Thread.sleep(175);
 				miSerpiente.miJuego.moverSerpiente();
@@ -18,4 +20,7 @@ public class RelojVelocidad extends Thread {
 		}
 	}
 	
+	public void setEstado(boolean b) {
+		activo = b;
+	}
 }

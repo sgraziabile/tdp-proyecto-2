@@ -82,9 +82,6 @@ public class SerpienteLogica  {
 		nuevo.actualizarGrafica();
 	}
 	
-	
-	
-	
 	public Cuerpo getCabeza() {
 		return cabeza;
 	}
@@ -132,6 +129,7 @@ public class SerpienteLogica  {
 	}
 	
 	public void detenerReloj() {
+		miReloj.setEstado(false);
 		miReloj.stop();
 	}
 	

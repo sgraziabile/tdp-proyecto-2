@@ -41,9 +41,10 @@ public class Juego {
 	}
 	
 	public void gameOver() {
+		miVentana.gameOver();
+		cronometro.setEstado(false);
 		miSerpiente.borrarGraficaCabeza();
 		miTablero.borrarTablero();
-		miVentana.gameOver();
 		miSerpiente.detenerReloj();
 		cronometro.stop();
 		cambiarNivel(1);
@@ -52,8 +53,8 @@ public class Juego {
 	public void jugar() {
 		direccion = 2;
 		cronometro = new Reloj(this);
-		cronometro.start();
 		cambiarNivel(1);
+		cronometro.start();
 		miSerpiente = new SerpienteLogica(this);
 	}
 	
@@ -74,8 +75,10 @@ public class Juego {
 		}
 		
 		try {
-			if(i!=1)
+			if(i!=1) {
 				miSerpiente.regenerarSerpiente();
+				miTablero.borrarTablero();
+			}
 			misEntidades=GeneradorNiveles.cargarNivel(rutaArchivo,this);	//actualiza la lista de entidades según el nivel correspondiente
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -99,7 +102,7 @@ public class Juego {
 	
 	public void decrementarEntidades(Entidad e) {
 		misEntidades.remove(e);
-		getBloque(e.getX()/20, e.getY()/20).desocupar(e);
+		getBloque((e.getX()-10)/20,(e.getY()-10)/20).desocupar(e);
 		if(!activarEntidad()) {
 			nivel++;
 			cambiarNivel(nivel);
@@ -114,12 +117,12 @@ public class Juego {
 		if(misEntidades.isEmpty())
 			return false;
 		else {
-			 int random = (int) Math.random()%misEntidades.size();
+			 int random = (int) (Math.random()*100)%misEntidades.size();
 			 System.out.println(random);
 			 Entidad ent = misEntidades.get(random);
 			 ent.getMiGrafica().getImage().setVisible(true);
 			 miVentana.actualizarGrafica(ent.getMiGrafica());
-			 getBloque(ent.getX()/20, ent.getY()/20).ocupar(ent);
+			 getBloque((ent.getX()-10)/20, (ent.getY()-10)/20).ocupar(ent);
 			
 			return true;
 		}
@@ -143,12 +146,4 @@ public class Juego {
 	public void setTablero(Tablero t) {
 		miTablero=t;
 	}
-	/*
-	private int primerDigito(int num) {
-		Integer numero = Integer.parseInt(""+num);
-		int desplazamiento = Double.valueOf(Math.pow(10, numero.SIZE-1)).intValue();
-		return num/desplazamiento;
-	}
-	*/
-
 }

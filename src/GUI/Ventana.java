@@ -162,7 +162,7 @@ public class Ventana extends JFrame{
 		panelPuntTiempo.add(lblTimer);
 		
 		tfTimer = new JTextField();
-		tfTimer.setText("x2");
+		tfTimer.setText("0");
 		tfTimer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		tfTimer.setBackground(Color.GRAY);
 		tfTimer.setForeground(Color.BLACK);
@@ -211,7 +211,6 @@ public class Ventana extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
 				miJuego.getJugador().setNombre(nombre);
-				miJuego.getJugador().setPuntuacion(65);
 				miJuego.getMiRanking().agregarJugador(miJuego.getJugador());
 				if(miJuego.getJugador().getNombre() != "") {
 					lblgameOver.setVisible(false);
@@ -287,6 +286,9 @@ public class Ventana extends JFrame{
 
 		panel.add(panelRanking);
 		return panelRanking;
+	}
+	public JTextField getCrono() {
+		return tfTimer;
 	}
 	
 	private boolean cambioDireccion(int ant, int nueva) {
