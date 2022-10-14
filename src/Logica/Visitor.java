@@ -25,7 +25,5 @@ public interface Visitor {
 	
 	public void visitarCuerpo(Cuerpo p);
 	
-
-	public void procesarColisiones(List<Entidad> entidades);
 	
 }

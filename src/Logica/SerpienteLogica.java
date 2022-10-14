@@ -23,7 +23,7 @@ public class SerpienteLogica  {
 		miJuego = j;
 		cuerpo = new ArrayList<Cuerpo>();
 		colorSerpiente=1;
-		miReloj = new RelojVelocidad(this, 300);
+		miReloj = new RelojVelocidad(this, 175);
 		miReloj.start();
 		
 		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
@@ -59,7 +59,7 @@ public class SerpienteLogica  {
 		}
 
 		esteBloque = miJuego.miTablero.getBloque((cabeza.getX()/20),(cabeza.getY()/20));
-		visitor.procesarColisiones(esteBloque.getEntidades());
+		esteBloque.procesarColisiones(visitor, this);
 		return pudo;
 	}
 	
@@ -115,9 +115,9 @@ public class SerpienteLogica  {
 			aux.borrarGrafica();
 		}
 		cuerpo = new ArrayList<Cuerpo>();
-		colorSerpiente=1;
+		crecimiento=0;
 		miJuego.setDireccion(2);
-		miReloj.setVelocidad(300);
+		miReloj.setVelocidad(175);
 		cabeza = new Cuerpo(150, 150, miJuego.getVentana(),colorSerpiente);
 		cabeza.setGrafica(colorSerpiente);
 		cuerpo.add(cabeza);
