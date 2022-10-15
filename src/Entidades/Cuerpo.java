@@ -23,7 +23,6 @@ public class Cuerpo extends Entidad{
 	@Override
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		juego.gameOver();
-		System.out.println("Choco Cuerpo");
 	}
 
 }
