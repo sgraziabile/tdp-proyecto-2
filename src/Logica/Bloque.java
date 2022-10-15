@@ -12,7 +12,7 @@ import Entidades.Entidad;
 
 
 public class Bloque {
-	protected List<Entidad> misEntidades;
+	protected ArrayList<Entidad> misEntidades;
 	
 	public Bloque() { 
 		misEntidades = new ArrayList<Entidad>();
@@ -33,7 +33,8 @@ public class Bloque {
 	}
 	//Procesa las coliciones de las entidades del bloque con la cabeza de la serpiente
 	public void procesarColisiones(Visitor v,SerpienteLogica snake) {
-		Iterator<Entidad> it=misEntidades.iterator();
+		ArrayList<Entidad> colisiones= (ArrayList<Entidad>) misEntidades.clone();
+		Iterator<Entidad> it=colisiones.iterator();
 		Entidad aux=null;
 		while(it.hasNext()) {
 			aux=it.next();
@@ -69,5 +70,7 @@ public class Bloque {
 			colisiono=true;
 		return colisiono;
 	}
+	
+	
 	
 }

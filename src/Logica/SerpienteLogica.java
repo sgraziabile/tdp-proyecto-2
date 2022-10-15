@@ -53,12 +53,12 @@ public class SerpienteLogica  {
 		}
 		else {
 			agregarBloque(x,y);
-			miJuego.getBloque(cuerpo.get(cuerpo.size()-1).getX()/20,cuerpo.get(cuerpo.size()-1).getY()/20).getEntidades().remove(cuerpo.get(cuerpo.size()-1));
+			miJuego.getBloque((cuerpo.get(cuerpo.size()-1).getX()-10)/20,(cuerpo.get(cuerpo.size()-1).getY()-10)/20).getEntidades().remove(cuerpo.get(cuerpo.size()-1));
 			cuerpo.get(cuerpo.size()-1).borrarGrafica();
 			cuerpo.remove(cuerpo.get(cuerpo.size()-1));
 		}
 
-		esteBloque = miJuego.miTablero.getBloque((cabeza.getX()/20),(cabeza.getY()/20));
+		esteBloque = miJuego.miTablero.getBloque((cabeza.getX()-10)/20,((cabeza.getY()-10)/20));
 		esteBloque.procesarColisiones(visitor, this);
 		return pudo;
 	}
@@ -130,7 +130,6 @@ public class SerpienteLogica  {
 	
 	public void detenerReloj() {
 		miReloj.setEstado(false);
-		miReloj.stop();
 	}
 	
 }

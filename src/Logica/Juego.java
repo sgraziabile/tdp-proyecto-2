@@ -46,7 +46,6 @@ public class Juego {
 		miSerpiente.borrarGraficaCabeza();
 		miTablero.borrarTablero();
 		miSerpiente.detenerReloj();
-		cronometro.stop();
 		cambiarNivel(1);
 	}
 	
@@ -58,10 +57,6 @@ public class Juego {
 		miSerpiente = new SerpienteLogica(this);
 	}
 	
-	public void actualizarTiempo(int x) {
-		//llamar a ventana
-		System.out.println(x);
-	}
 	
 	public void cambiarNivel(int i) {
 		String rutaArchivo;
@@ -123,7 +118,6 @@ public class Juego {
 			 ent.getMiGrafica().getImage().setVisible(true);
 			 miVentana.actualizarGrafica(ent.getMiGrafica());
 			 getBloque((ent.getX()-10)/20, (ent.getY()-10)/20).ocupar(ent);
-			
 			return true;
 		}
 	}
@@ -146,4 +140,10 @@ public class Juego {
 	public void setTablero(Tablero t) {
 		miTablero=t;
 	}
+	public void actualizarTiempo(int x) {
+		miVentana.getCrono().setText(Integer.toString(x));
+	}
+	
+	
+	
 }
