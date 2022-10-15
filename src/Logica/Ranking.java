@@ -24,7 +24,7 @@ public class Ranking {
 		try {
 			arregloJugadores = Leer.leer();
 		} catch(Exception e) {
-			e.printStackTrace();
+			
 		}
 	}
 	/*

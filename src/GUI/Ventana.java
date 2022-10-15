@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Logica.*;
@@ -20,7 +19,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
-import javax.swing.SwingConstants;
 
 
 @SuppressWarnings("serial")
@@ -30,6 +28,7 @@ public class Ventana extends JFrame{
 	private Juego miJuego;
 	private JTextField tfPuntuacion;
 	private JTextField tfTimer;
+	private boolean direccion;
 
 	/**
 	 * Launch the application.
@@ -55,21 +54,28 @@ public class Ventana extends JFrame{
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_UP) {
-					if(cambioDireccion(miJuego.getDireccion(), 1))
+				if (e.getKeyCode() == KeyEvent.VK_UP && direccion) {
+					if(cambioDireccion(miJuego.getDireccion(), 1)) {
 						miJuego.setDireccion(1);
+					}
 		        }
-				if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-					if(cambioDireccion(miJuego.getDireccion(), 2))
+				if (e.getKeyCode() == KeyEvent.VK_RIGHT && direccion) {
+					if(cambioDireccion(miJuego.getDireccion(), 2)) {
 						miJuego.setDireccion(2);
+						direccion = false;
+					}
 		        }
-				if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-					if(cambioDireccion(miJuego.getDireccion(), 3))
+				if (e.getKeyCode() == KeyEvent.VK_DOWN && direccion) {
+					if(cambioDireccion(miJuego.getDireccion(), 3)) {
 						miJuego.setDireccion(3);
-		        }
-		        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-					if(cambioDireccion(miJuego.getDireccion(), 4))
+						direccion = false;
+					}
+				}	
+		        if (e.getKeyCode() == KeyEvent.VK_LEFT && direccion) {
+					if(cambioDireccion(miJuego.getDireccion(), 4)) {
 		        		miJuego.setDireccion(4);
+		        		direccion = false;
+					}
 		        } 
 			}
 		});
@@ -330,5 +336,9 @@ public class Ventana extends JFrame{
 		contentPaneRanking.remove(panelRanking);
 		panelRanking = null;
 		
+	}
+	
+	public void setPuedeMover(boolean b) {
+		direccion = b;
 	}
 }
