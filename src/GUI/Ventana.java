@@ -154,6 +154,7 @@ public class Ventana extends JFrame{
 		tfPuntuacion.setText("");
 		tfPuntuacion.setBackground(Color.GRAY);
 		tfPuntuacion.setForeground(Color.BLACK);
+		tfPuntuacion.setEditable(false);
 		panelPuntTiempo.add(tfPuntuacion);
 		tfPuntuacion.setColumns(10);
 		
@@ -166,11 +167,11 @@ public class Ventana extends JFrame{
 		tfTimer.setFont(new Font("Tahoma", Font.BOLD, 16));
 		tfTimer.setBackground(Color.GRAY);
 		tfTimer.setForeground(Color.BLACK);
+		tfTimer.setEditable(false);
 		panelPuntTiempo.add(tfTimer);
 		tfTimer.setColumns(10);
 		
 		miJuego = new Juego(this);
-		
 		
 	}
 	
@@ -214,10 +215,10 @@ public class Ventana extends JFrame{
 				miJuego.getMiRanking().agregarJugador(miJuego.getJugador());
 				if(miJuego.getJugador().getNombre() != "") {
 					lblgameOver.setVisible(false);
+					btnAgregarJ.setVisible(false);
 					JPanel rank =setLblRanking(contentPaneJuego, new Color(124, 252, 0));
 					botonVolver(contentPaneJuego, rank);
 					contentPaneJuego.repaint();
-					btnAgregarJ.setVisible(false);
 					}
 			}
 		});
@@ -283,7 +284,8 @@ public class Ventana extends JFrame{
 		panelRanking.add(jug4);
 		panelRanking.add(jug5);
 		panelRanking.add(top5);
-
+		panelRanking.setVisible(true);
+		
 		panel.add(panelRanking);
 		return panelRanking;
 	}
@@ -300,5 +302,17 @@ public class Ventana extends JFrame{
 			default: return true;
 		}
 		return true;
+	}
+	public JLabel setLblNivel(int i) {
+		JLabel lblNivel = new JLabel("¡Nivel "+i+"!");
+		lblNivel.setBounds(218, 169, 182, 39);
+		lblNivel.setFont(new Font("Tahoma", Font.BOLD, 39));
+		contentPaneJuego.add(lblNivel);
+		
+		return lblNivel;
+	}
+	
+	public void borrarLblNivel(JLabel lblNivel) {
+		contentPaneJuego.add(lblNivel);
 	}
 }
