@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 
 import Entidades.*;
 
@@ -46,10 +47,10 @@ public class Juego {
 		miSerpiente.borrarGraficaCabeza();
 		miTablero.borrarTablero();
 		miSerpiente.detenerReloj();
-		cambiarNivel(1);
 	}
 	
 	public void jugar() {
+		miJugador.setPuntuacion(0);
 		direccion = 2;
 		cronometro = new Reloj(this);
 		cambiarNivel(1);
@@ -66,6 +67,7 @@ public class Juego {
 			case 3: rutaArchivo="Niveles/Nivel3.txt";break;
 			case 4: rutaArchivo="Niveles/Nivel4.txt";break;
 			case 5: rutaArchivo="Niveles/Nivel5.txt";break;
+			case 6: miVentana.ganar();
 			default:  rutaArchivo="Niveles/Nivel1.txt";
 		}
 		
@@ -73,6 +75,15 @@ public class Juego {
 			if(i!=1) {
 				miSerpiente.regenerarSerpiente();
 				miTablero.borrarTablero();
+				JLabel lblnivel = miVentana.setLblNivel(i);
+				int nivel = cronometro.cronometro+1;
+				int aux = cronometro.cronometro;
+				while(aux != nivel) {
+					aux = cronometro.cronometro;
+					System.out.println(aux);
+					System.out.println("n"+nivel);
+				}
+				miVentana.borrarLblNivel(lblnivel);
 			}
 			misEntidades=GeneradorNiveles.cargarNivel(rutaArchivo,this);	//actualiza la lista de entidades según el nivel correspondiente
 		} catch (IOException e) {

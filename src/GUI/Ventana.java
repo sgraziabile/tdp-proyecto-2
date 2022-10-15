@@ -194,36 +194,7 @@ public class Ventana extends JFrame{
 	
 	
 	public void gameOver() {
-		JPanel panelRanking = crearPanelRanking();
-		JLabel lblgameOver = new JLabel("¡GAME OVER!");
-		lblgameOver.setFont(new Font("Tahoma", Font.BOLD, 27));
-		lblgameOver.setBounds(210, 170, 190, 39);
-		contentPaneJuego.add(lblgameOver);
-		
-		JButton btnAgregarJ = new JButton("Agregar jugador");
-		btnAgregarJ.setBounds(210, 330, 190, 60);
-		btnAgregarJ.setFont(new Font("Tahoma", Font.BOLD, 16));
-		contentPaneJuego.add(btnAgregarJ);
-		btnAgregarJ.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
-				miJuego.getJugador().setNombre(nombre);
-				miJuego.getMiRanking().agregarJugador(miJuego.getJugador());
-				if(miJuego.getJugador().getNombre() != "") {
-					lblgameOver.setVisible(false);
-					btnAgregarJ.setVisible(false);
-					JPanel rank =setLblRanking(contentPaneJuego, new Color(124, 252, 0));
-					botonVolver(contentPaneJuego, rank);
-					contentPaneJuego.repaint();
-					}
-			}
-		});
-		contentPaneJuego.add(lblgameOver);
-		contentPaneJuego.add(btnAgregarJ);
-		contentPaneJuego.remove(panelRanking);
-		contentPaneRanking.remove(panelRanking);
-		panelRanking = null;
-		
+		terminarJuego("¡GAME OVER!");
 	}
 	
 	public void actualizarGrafica(EntidadGrafica eg) {
@@ -309,12 +280,11 @@ public class Ventana extends JFrame{
 		lblNivel.setBounds(218, 169, 182, 39);
 		lblNivel.setFont(new Font("Tahoma", Font.BOLD, 39));
 		contentPaneJuego.add(lblNivel);
-		
 		return lblNivel;
 	}
 	
 	public void borrarLblNivel(JLabel lblNivel) {
-		contentPaneJuego.add(lblNivel);
+		contentPaneJuego.remove(lblNivel);
 	}
 	public JPanel crearPanelRanking() {
 		JPanel panelRanking = new JPanel();
@@ -323,5 +293,42 @@ public class Ventana extends JFrame{
 		panelRanking.setLayout(null);
 		
 		return panelRanking;
+	}
+	
+	public void ganar() {
+		terminarJuego("¡GANASTE!");
+	}
+	
+	private void terminarJuego(String s) {
+		JPanel panelRanking = crearPanelRanking();
+		JLabel lblgameOver = new JLabel(s);
+		lblgameOver.setFont(new Font("Tahoma", Font.BOLD, 27));
+		lblgameOver.setBounds(210, 170, 190, 39);
+		contentPaneJuego.add(lblgameOver);
+		
+		JButton btnAgregarJ = new JButton("Agregar jugador");
+		btnAgregarJ.setBounds(210, 330, 190, 60);
+		btnAgregarJ.setFont(new Font("Tahoma", Font.BOLD, 16));
+		contentPaneJuego.add(btnAgregarJ);
+		btnAgregarJ.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombre = JOptionPane.showInputDialog("Ingrese su nombre");
+				miJuego.getJugador().setNombre(nombre);
+				miJuego.getMiRanking().agregarJugador(miJuego.getJugador());
+				if(miJuego.getJugador().getNombre() != "") {
+					lblgameOver.setVisible(false);
+					btnAgregarJ.setVisible(false);
+					JPanel rank =setLblRanking(contentPaneJuego, new Color(124, 252, 0));
+					botonVolver(contentPaneJuego, rank);
+					contentPaneJuego.repaint();
+					}
+			}
+		});
+		contentPaneJuego.add(lblgameOver);
+		contentPaneJuego.add(btnAgregarJ);
+		contentPaneJuego.remove(panelRanking);
+		contentPaneRanking.remove(panelRanking);
+		panelRanking = null;
+		
 	}
 }

@@ -75,11 +75,5 @@ public class Bloque {
 		return colisiono;
 	}
 	
-	public static List<Entidad> clonarMisEntidades(List<Entidad> l) { 
-		List<Entidad> clone = new ArrayList<Entidad>(l.size()); 
-		for(Entidad entidad: l) 
-			clone.add(entidad); return clone; }
-	
-	
 	
 }
