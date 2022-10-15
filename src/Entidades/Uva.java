@@ -17,6 +17,8 @@ public class Uva extends Alimento{
 	public void afectarSerpiente(SerpienteLogica snake,Juego juego) {
 		juego.incrementarPuntuacion(66);
 		snake.crecer(4);
+		borrarGrafica();
+		juego.decrementarEntidades(this);
 	}
 	
 	public void aceptar(Visitor v) {
