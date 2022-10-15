@@ -33,15 +33,13 @@ public class Bloque {
 	}
 	//Procesa las coliciones de las entidades del bloque con la cabeza de la serpiente
 	public void procesarColisiones(Visitor v,SerpienteLogica snake) {
-		ArrayList<Entidad> colisiones= (ArrayList<Entidad>) misEntidades.clone();
-		Iterator<Entidad> it=colisiones.iterator();
-		Entidad aux=null;
-		while(it.hasNext()) {
-			aux=it.next();
-			if(verColisiones(aux,snake.getCabeza()) && aux.getMiGrafica().getImage().isVisible())
-				aux.aceptar(v);
+		ArrayList<Entidad> colisiones=(ArrayList<Entidad>) misEntidades.clone();
+		for(Entidad e:colisiones) {
+			if(verColisiones(e,snake.getCabeza()) && e.getMiGrafica().getImage().isVisible())
+				e.aceptar(v);
+			}
 		}
-	}
+	
 	
 	/**
 	 * Arma la hitbox de una entidad e pasada por parametro
