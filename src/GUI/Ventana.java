@@ -26,7 +26,7 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class Ventana extends JFrame{
 
-	private JPanel contentPaneMenu, contentPaneJuego, contentPaneRanking, panelRanking, panelPuntTiempo ;
+	private JPanel contentPaneMenu, contentPaneJuego, contentPaneRanking, panelPuntTiempo ;
 	private Juego miJuego;
 	private JTextField tfPuntuacion;
 	private JTextField tfTimer;
@@ -90,12 +90,7 @@ public class Ventana extends JFrame{
 		contentPaneRanking.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		contentPaneRanking.setLayout(null);
 	
-		panelRanking = new JPanel();
-		panelRanking.setBounds(190, 90, 230, 300);
-		panelRanking.setBackground(new Color(200, 183, 107));
-		panelRanking.setLayout(null);
-		contentPaneRanking.add(panelRanking);
-		
+
 		JButton btnJugar = new JButton("Jugar");
 		
 		btnJugar.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -199,6 +194,7 @@ public class Ventana extends JFrame{
 	
 	
 	public void gameOver() {
+		JPanel panelRanking = crearPanelRanking();
 		JLabel lblgameOver = new JLabel("¡GAME OVER!");
 		lblgameOver.setFont(new Font("Tahoma", Font.BOLD, 27));
 		lblgameOver.setBounds(210, 170, 190, 39);
@@ -224,6 +220,9 @@ public class Ventana extends JFrame{
 		});
 		contentPaneJuego.add(lblgameOver);
 		contentPaneJuego.add(btnAgregarJ);
+		contentPaneJuego.remove(panelRanking);
+		contentPaneRanking.remove(panelRanking);
+		panelRanking = null;
 		
 	}
 	
@@ -250,12 +249,14 @@ public class Ventana extends JFrame{
 				contentPaneMenu.setVisible(true);
 				panel.setVisible(false);
 				ranking.setVisible(false);
+				panel.remove(ranking);
 				setContentPane(contentPaneMenu);
 			}
 		});
 	}
 	
 	private JPanel setLblRanking(JPanel panel, Color c) {
+		JPanel panelRanking = crearPanelRanking();
 		JLabel top5 = new JLabel("TOP 5");
 		top5.setFont(new Font("Verdana", Font.BOLD, 25));
 		top5.setBounds(60, 35, 90, 82);
@@ -314,5 +315,13 @@ public class Ventana extends JFrame{
 	
 	public void borrarLblNivel(JLabel lblNivel) {
 		contentPaneJuego.add(lblNivel);
+	}
+	public JPanel crearPanelRanking() {
+		JPanel panelRanking = new JPanel();
+		panelRanking.setBounds(190, 90, 230, 300);
+		panelRanking.setBackground(new Color(200, 183, 107));
+		panelRanking.setLayout(null);
+		
+		return panelRanking;
 	}
 }
